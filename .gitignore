@@ -1,0 +1,4 @@
+# BACKEND IGNORE
+backend/node_modules
+
+# FRONTEND IGNORE

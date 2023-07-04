@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://gig_guru_master:<password>@gigguru.hibnhig.mongodb.net/?retryWrites=true&w=majority"
+}
