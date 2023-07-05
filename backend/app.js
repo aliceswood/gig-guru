@@ -7,6 +7,7 @@ var cors = require('cors');
 
 // routes
 const usersRouter = require("./routes/users");
+const tokensRouter = require("./routes/tokens");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(cors({ origin: true, credentials: true }));
 
 // use routes
 app.use('/users', usersRouter);
+app.use("/tokens", tokensRouter);
 
 // const port = process.env.PORT || 8082;
 const port = 8082;
