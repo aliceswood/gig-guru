@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "jest": "jest --runInBand",
     "start": "node app.js",
     "app": "nodemon app.js"
   },
@@ -21,6 +22,7 @@
     "jest": "^29.6.0",
     "mongodb": "^5.6.0",
     "mongoose": "^6.3.3",
+    "supertest": "^6.3.3",
     "validation": "^0.0.1"
   },
   "devDependencies": {
