@@ -20,7 +20,7 @@ app.use(bp.urlencoded({ extended: true }));
 // cors
 app.use(cors({ origin: true, credentials: true }));
 
-app.get('/', (req, res) => res.send('Hello Makers'));
+// app.get('/', (req, res) => res.send('Hello Makers'));
 
 // use routes
 app.use('/users', usersRouter);
@@ -29,3 +29,21 @@ app.use('/users', usersRouter);
 const port = 8082;
 
 app.listen(port,  () => console.log(`Server running on port ${port}`));
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next(createError(404));
+});
+
+// error handler
+app.use((err, req, res) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  // respond with details of the error
+  res.status(err.status || 500).json({message: 'server error'})
+});
+
+module.exports = app;
