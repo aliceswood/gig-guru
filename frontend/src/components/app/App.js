@@ -1,8 +1,8 @@
 import './App.css';
 import SignUpForm from '../signupForm/SignupForm'
+import Feed from '../feed/Feed'
 // import React, { useState } from 'react';
 import {
-  useNavigate,
   Routes,
   Route
 } from "react-router-dom";
@@ -11,7 +11,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
+        <Route path='/signup' element={<SignUpForm />}/>
+        <Route path='/' element={<Feed />}/>
       </Routes>
     </>
   );

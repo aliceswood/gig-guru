@@ -1,4 +1,3 @@
-
 describe("Signing up", () => {
   // it("with valid credentials, redirects to '/login'", () => {
   //   cy.visit("/signup");
