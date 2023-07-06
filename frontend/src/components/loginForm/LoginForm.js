@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 // import "./LoginForm.css";
 
-const LogInForm = () => {
+const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token] = useState(window.localStorage.getItem("token"));
 
-    // useEffect(() => {
-    //   if(token) {
-    //     navigate('/')
-    //   }
-    // }, [])
+    useEffect(() => {
+      if(token) {
+        navigate('/')
+      }
+    }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,13 +25,13 @@ const LogInForm = () => {
 
     if(response.status !== 201) {
       console.log("oop")
-      // navigate('/login')
+      navigate('/login')
     } else {
       console.log("yay")
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
       window.location.reload(false);
-      // navigate('/');
+      navigate('/');
     }
   }
   
