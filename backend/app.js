@@ -28,10 +28,13 @@ app.use(cors({ origin: true, credentials: true }));
 app.use('/users', usersRouter);
 app.use("/tokens", tokensRouter);
 
-const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
-// const port = 8082;
+// const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
+const port = 8082;
 
-app.listen(port,  () => console.log(`Server running on port ${port}`));
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => console.log(`Listening on port ${port}`))
+}
+// app.listen(port,  () => console.log(`Server running on port ${port}`));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

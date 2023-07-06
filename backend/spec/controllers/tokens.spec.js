@@ -1,6 +1,6 @@
 const app = require("../../app");
 const request = require("supertest");
-// require("../mongodb_helper");
+require("../mongodb_helper");
 const User = require('../../models/user');
 
 describe("/tokens", () => {

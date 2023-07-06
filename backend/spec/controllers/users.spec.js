@@ -1,13 +1,13 @@
 const app = require("../../app");
 const request = require("supertest");
+require("../mongodb_helper");
 const User = require('../../models/user');
 
 
 describe("/users", () => {
-  beforeEach( async () => {
-    await User.deleteMany({});
-  });
-
+  afterAll( async () => {
+    await User.deleteMany({})
+  })
 
   describe("POST, when email, password and username are provided", () => {
     test("the response code is 201", async () => {
