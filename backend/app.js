@@ -25,8 +25,8 @@ app.use(cors({ origin: true, credentials: true }));
 // use routes
 app.use('/users', usersRouter);
 
-// const port = process.env.PORT || 8082;
-const port = 8082;
+const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
+// const port = 8082;
 
 app.listen(port,  () => console.log(`Server running on port ${port}`));
 
