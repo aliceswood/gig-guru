@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
 
-const Feed = () => {
+const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
+
   var date = new Date();
   date = date.toISOString().split('T')[0];
   date += 'T00:00:00Z';
@@ -14,15 +16,25 @@ const Feed = () => {
       .catch(error => console.error(error));
   });
 
+  const logout = () => {
+    window.localStorage.removeItem("token")
+    setToken(null)
+    navigate('/login')
+  }
+
   const eventList = data.map(event => <Event {...event} key={event.id} />)
   
   if(!data.length) {
     return 'No search results'
   }
 
+
   return (
     <>
       <div>This page has rendered
+        <div>
+          <button type="button" id="logout" onClick={logout}>Logout</button>
+        </div>
         <div>
           { date.toString() }
           { eventList }

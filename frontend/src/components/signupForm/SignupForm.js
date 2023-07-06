@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignupForm = () => {
+const SignupForm = ({ navigate }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
@@ -18,8 +18,10 @@ const SignupForm = () => {
     .then(response => {
       if(response.status === 201) {
         console.log('user signed up')
+        navigate('/login')
       } else {
         console.log('error')
+        navigate('/signup')
       }
     })
   }
@@ -36,8 +38,15 @@ const SignupForm = () => {
     setUsername(event.target.value)
   }
 
+  const login = () => {
+    navigate('/login')
+  }
+
   return (
     <div className="signUpContainer">
+      <div>
+        <button type="button" id="login" onClick={login}>Log in!</button>
+      </div>
        <form onSubmit={handleSubmit}>
             <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
             <input placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
