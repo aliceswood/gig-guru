@@ -10,11 +10,11 @@ const Feed = ({ navigate }) => {
   date += 'T00:00:00Z';
 
   useEffect(() => {
-    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=<api-key>`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
       .then(response => response.json())
       .then(json => setData(json._embedded.events))
       .catch(error => console.error(error));
-  });
+  }, []);
 
   const logout = () => {
     window.localStorage.removeItem("token")
@@ -25,13 +25,14 @@ const Feed = ({ navigate }) => {
   const eventList = data.map(event => <Event {...event} key={event.id} />)
   
   if(!data.length) {
-    return 'No search results'
-  }
+    console.log('No search results');
+  } 
 
 
   return (
     <>
-      <div>This page has rendered
+      <div>
+        This page has rendered
         <div>
           <button type="button" id="logout" onClick={logout}>Logout</button>
         </div>
