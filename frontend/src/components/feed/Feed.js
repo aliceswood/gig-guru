@@ -3,14 +3,19 @@ import Event from '../event/Event'
 
 const Feed = () => {
   const [data, setData] = useState([]);
+  var date = new Date();
+  date = date.toISOString().split('T')[0];
+  date += 'T00:00:00Z';
 
   useEffect(() => {
-    fetch('https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&apikey=PK36qTtNEc9QOQ9NGvgvb1A65ZyzmW9N')
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=<api-key>`)
       .then(response => response.json())
       .then(json => setData(json._embedded.events))
       .catch(error => console.error(error));
-  }, []);
+  });
 
+  const eventList = data.map(event => <Event {...event} key={event.id} />)
+  
   if(!data.length) {
     return 'No search results'
   }
@@ -19,7 +24,8 @@ const Feed = () => {
     <>
       <div>This page has rendered
         <div>
-          {data.map(event => <Event {...event} key={event.id} />)}
+          { date.toString() }
+          { eventList }
         </div>
       </div>
     </>
