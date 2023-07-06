@@ -43,10 +43,17 @@ const LogInForm = ({ navigate }) => {
     setPassword(event.target.value)
   }
 
+  const signup = () => {
+    navigate('/signup')
+  }
+
 
     return (
       <>
         <div className="login-form">
+          <div>
+            <button type="button" id="signup" onClick={signup}>Signup!</button>
+          </div>
           <form onSubmit={handleSubmit}>
             <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
             <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
