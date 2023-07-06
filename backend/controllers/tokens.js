@@ -11,7 +11,6 @@ const SessionsController = {
       if (!user) {
         console.log("auth error: user not found")
         res.status(401).json({ message: "auth error" });
-      // } else if (user.password !== password) {
       } else {
         let isValid = await user.isValidPassword(password)
         if (!isValid) {
