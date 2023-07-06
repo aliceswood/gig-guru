@@ -4,9 +4,11 @@ const express = require('express');
 const connectDB = require('./config/db');
 const bp = require('body-parser');
 var cors = require('cors');
+const path = require("path");
 
 // routes
 const usersRouter = require("./routes/users");
+const tokensRouter = require("./routes/tokens");
 
 const app = express();
 
@@ -24,6 +26,7 @@ app.use(cors({ origin: true, credentials: true }));
 
 // use routes
 app.use('/users', usersRouter);
+app.use("/tokens", tokensRouter);
 
 const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
 // const port = 8082;
