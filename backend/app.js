@@ -8,7 +8,7 @@ const path = require("path");
 
 // routes
 const usersRouter = require("./routes/users");
-// const tokensRouter = require("./routes/tokens");
+const tokensRouter = require("./routes/tokens");
 
 const app = express();
 
@@ -26,10 +26,10 @@ app.use(cors({ origin: true, credentials: true }));
 
 // use routes
 app.use('/users', usersRouter);
-// app.use("/tokens", tokensRouter);
+app.use("/tokens", tokensRouter);
 
-// const port = process.env.PORT || 8082;
-const port = 8082;
+const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
+// const port = 8082;
 
 app.listen(port,  () => console.log(`Server running on port ${port}`));
 
