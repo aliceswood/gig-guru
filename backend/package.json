@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
+    "jest": "jest --runInBand",
     "start": "node app.js",
     "app": "nodemon app.js"
   },
