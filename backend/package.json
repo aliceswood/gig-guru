@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "jest": "jest --runInBand",
-    "start": "node app.js",
-    "app": "nodemon app.js"
+  "start": "node app.js",
+  "start:dev": "NODE_ENV=development node app.js",
+  "jest": "jest --runInBand",
+  "app": "nodemon app.js"
   },
   "author": "Gig Gurus - Makers Academy",
   "license": "ISC",
