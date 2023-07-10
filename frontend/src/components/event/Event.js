@@ -22,7 +22,7 @@ const Event = (props) => {
       <div className="event-image">
         <img src={props.images[0].url} alt={props.name}/>
       </div>
-      <div className="event-info-container">
+      <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">
           <div>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
