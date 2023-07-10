@@ -29,28 +29,36 @@ const Feed = ({ navigate }) => {
     navigate("/login");
   };
 
+  const redirectToSignup = () => {
+    navigate("/signup");
+  }
+
   const eventList = data.map((event) => <Event {...event} key={event.id} />);
 
   if (!data.length) {
     console.log("No search results");
   }
 
-  return (
-    <>
-      <div>
-        This page has rendered
+  if (token) {
+    return (
+      <>
         <div>
-          <button type="button" id="logout" onClick={logout}>
-            Logout
-          </button>
+          This page has rendered
+          <div>
+            <button type="button" id="logout" onClick={logout}>
+              Logout
+            </button>
+          </div>
+          <div data-cy="feed">
+            {date.toString()}
+            {eventList}
+          </div>
         </div>
-        <div data-cy="feed">
-          {date.toString()}
-          {eventList}
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    redirectToSignup();
+  }
 };
 
 export default Feed;
