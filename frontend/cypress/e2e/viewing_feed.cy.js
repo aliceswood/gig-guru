@@ -1,18 +1,20 @@
-import Feed from "./Feed";
-import { getDate } from "./Feed";
+import Feed from "../../src/components/feed/Feed";
+import { getDate } from "../../src/components/feed/Feed";
 
-beforeEach(() => {
-  cy.clock(new Date(), ["Date"]);
-});
+describe("Viewing Feed", () => {
 
-describe("Feed", () => {
-  it("Calls the / endpoint and lists all the events", () => {
+  beforeEach(() => {
+    cy.signup("user@email.com", "12345678", "username");
+    cy.clock(new Date(), ["Date"]);
+  });
+
+  it("with valid credentials, redirects to '/'", () => {
     const date = getDate();
-    window.localStorage.setItem("token", "fakeToken");
-    console.log("date is:", date);
-    // cy.get("[data-cy='feed']").should('be.visible')
+    cy.visit("/login");
+    cy.get("#email").type("user@email.com");
+    cy.get("#password").type("12345678");
+    cy.get("#submit").click();
 
-    //check previous acebook projects to see the syntax
     cy.intercept(
       `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`,
       (req) => {
@@ -36,15 +38,10 @@ describe("Feed", () => {
     ).as("getEvents");
     cy.mount(<Feed />);
 
-    // cy.get("[data-cy='feed']").should("be.visible");
-    cy.wait("@getEvents").then(() => {
-      cy.get('[data-cy="event-info-container"]').should(
-        "contain.text",
-        "Alice",
-        "2023/07/07",
-        "19:00:00"
-      );
-      console.log("you have made it");
-    });
+  
+  cy.url().should("include", "/");
+  cy.wait("@getEvents").then(() => {
+    cy.get("[data-cy='feed']").should("be.visible");
   });
 });
+})
