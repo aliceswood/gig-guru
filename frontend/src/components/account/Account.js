@@ -5,16 +5,20 @@ const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
   const [userId] = useState(window.localStorage.getItem("userId"));
 
+  
   useEffect(() => {
     fetch(`/users/${userId}`)
     .then(response => response.json())
     .then(async data => {
-      console.log(data.events);
       setEvents(data.events);
     })
   }, [])
 
-  return (
+  
+  var eventsArray = events.map((event) => <Event {...event} key={event.id}/>);
+  
+  
+    return (
     <>
       <div>Logged in as: {userId}</div>
       <div>
@@ -24,7 +28,7 @@ const Account = ({ navigate }) => {
         Slider placeholder
       </div>
       <div>
-        { events.map((event) => <Event {...event} key={event.id} />)}
+        { eventsArray }
       </div>
     </>
   );

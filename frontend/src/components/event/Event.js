@@ -2,7 +2,7 @@ import React from "react";
 import './event.css'
 
 const Event = (props) => {
-  console.log(props)
+  // console.log(props)
 
   const handleLike = async (event) => {
     event.preventDefault();
