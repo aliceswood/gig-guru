@@ -4,6 +4,7 @@ import './event.css'
 const Event = (props) => {
   console.log(props)
   return (
+    <div className="entireEvent">
     <div className="flex-container">
       <div className="event-image">
         <img src={props.images[0].url} alt={props.name}/>
@@ -15,13 +16,11 @@ const Event = (props) => {
           <div>Start time: {props.dates.start.localTime}</div>
         </div>
       </div>
-      <div className="event-buttons">
-        <button>
-          Like
+      <div>
+        <button className="likeButton">
+          Interested?
         </button>
-        <button>
-          Not interested
-        </button>
+        </div>
       </div>
     </div>
   );

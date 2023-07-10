@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Event from "../event/Event";
+import './Feed.css'
 
 export const getDate = () => {
   var date = new Date();
@@ -12,11 +13,11 @@ const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const date = getDate();
-  console.log("date is2:", date);
+  // console.log("date is2:", date);
 
   useEffect(() => {
     fetch(
-      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
+      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
     )
       .then((response) => response.json())
       .then((json) => setData(json._embedded.events))
@@ -38,15 +39,22 @@ const Feed = ({ navigate }) => {
   return (
     <>
       <div>
-        This page has rendered
+       <div>
+        This page has rendered - could add the nav bar here
         <div>
-          <button type="button" id="logout" onClick={logout}>
+          <button class nametype="button" id="logout" onClick={logout}>
             Logout
           </button>
         </div>
-        <div data-cy="feed">
-          {date.toString()}
-          {eventList}
+      </div>
+      <div className="feedPage">
+        <div className="logo">
+          <img src="small-logo.jpeg" alt="logo"/>
+        </div>
+          <div data-cy="feed" className="eventComponent">
+            {date.toString()}
+            {eventList}
+          </div>
         </div>
       </div>
     </>
