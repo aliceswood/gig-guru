@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
+import city_names from '../cities/Cities'
 
 const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
@@ -35,6 +36,12 @@ const Feed = ({ navigate }) => {
         This page has rendered
         <div>
           <button type="button" id="logout" onClick={logout}>Logout</button>
+          <label for="city-selector">Choose a location:</label>
+          <input list="cities" id="city-selector" name="city-selector" />
+
+          <datalist id="cities">
+            {city_names.map(city => <option value={city}></option>)}
+          </datalist>
         </div>
         <div>
           { date.toString() }
