@@ -9,14 +9,10 @@ describe("Feed", () => {
   it("Calls the / endpoint and lists all the events", () => {
     const date = getDate();
     window.localStorage.setItem("token", "fakeToken");
-    console.log("date is:", date);
-    // cy.get("[data-cy='feed']").should('be.visible')
 
-    //check previous acebook projects to see the syntax
     cy.intercept(
       `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`,
       (req) => {
-        console.log("this has been reached");
         req.reply({
           statusCode: 200,
           body: {
@@ -44,7 +40,6 @@ describe("Feed", () => {
         "2023/07/07",
         "19:00:00"
       );
-      console.log("you have made it");
     });
   });
 });
