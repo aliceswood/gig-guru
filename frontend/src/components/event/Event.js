@@ -3,6 +3,20 @@ import './event.css'
 
 const Event = (props) => {
   console.log(props)
+
+  const handleLike = async (event) => {
+    event.preventDefault();
+
+    await fetch('/users', {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify(props)
+    })
+  }
+
   return (
     <div className="flex-container">
       <div className="event-image">
@@ -16,9 +30,11 @@ const Event = (props) => {
         </div>
       </div>
       <div className="event-buttons">
-        <button>
+        <form onSubmit={handleLike}>
+        <button type="submit">
           Like
         </button>
+        </form>
         <button>
           Not interested
         </button>

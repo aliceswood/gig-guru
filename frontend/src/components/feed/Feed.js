@@ -10,7 +10,7 @@ const Feed = ({ navigate }) => {
   date += 'T00:00:00Z';
 
   useEffect(() => {
-    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=20&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
       .then(response => response.json())
       .then(json => setData(json._embedded.events))
       .catch(error => console.error(error));
