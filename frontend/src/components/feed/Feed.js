@@ -44,7 +44,7 @@ const Feed = ({ navigate }) => {
         This page has rendered
         <div>
           <button type="button" id="logout" onClick={logout}>Logout</button>
-          <label for="city-selector">Choose a location:</label>
+          <label for="city-selector">Choose a location: </label>
           <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
 
           <datalist id="cities">
