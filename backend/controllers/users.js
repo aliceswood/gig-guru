@@ -31,6 +31,11 @@ const UsersController = {
         }
       }
     );
+  },
+
+  GetUserId: (req, res) => {
+    const userId = tokenDecoder(req.headers['authorization'].split(' ')[1]).user_id;
+    res.status(201).json({ userId: userId, message: "OK" });
   }
 };
 
