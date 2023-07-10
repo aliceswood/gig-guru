@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
 import city_names from '../cities/Cities'
 
+export const getDate = () => {
+  var date = new Date();
+  date = date.toISOString().split("T")[0];
+  date += "T00:00:00Z";
+  return date;
+};
+
 const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [selectedCity, setSelectedCity] = useState('');
 
-  var date = new Date();
-  date = date.toISOString().split('T')[0];
-  date += 'T00:00:00Z';
-
+  const date = getDate();
+  
   useEffect(() => {
     if (selectedCity !== "") {
     fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
@@ -26,38 +31,45 @@ const Feed = ({ navigate }) => {
   }, [selectedCity]);
 
   const logout = () => {
-    window.localStorage.removeItem("token")
-    setToken(null)
-    navigate('/login')
+    window.localStorage.removeItem("token");
+    setToken(null);
+    navigate("/login");
+  };
+
+  const redirectToSignup = () => {
+    navigate("/signup");
   }
 
-  const eventList = data.map(event => <Event {...event} key={event.id} />)
-  
-  if(!data.length) {
-    console.log('No search results');
-  } 
+  const eventList = data.map((event) => <Event {...event} key={event.id} />);
 
+  if (!data.length) {
+    console.log("No search results");
+  }
 
-  return (
-    <>
-      <div>
-        This page has rendered
+  if (token) {
+    return (
+      <>
         <div>
-          <button type="button" id="logout" onClick={logout}>Logout</button>
-          <label for="city-selector">Choose a location: </label>
-          <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
+          This page has rendered
+          <div>
+            <button type="button" id="logout" onClick={logout}>Logout</button>
+            <label for="city-selector">Choose a location: </label>
+            <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
 
-          <datalist id="cities">
-            {city_names.map(city => <option value={city}></option>)}
-          </datalist>
+            <datalist id="cities">
+              {city_names.map(city => <option value={city}></option>)}
+            </datalist>
+          </div>
+          <div data-cy="feed">
+            {date.toString()}
+            {eventList}
+          </div>
         </div>
-        <div>
-          { date.toString() }
-          { eventList }
-        </div>
-      </div>
-    </>
-  )
-}
+      </>
+    );
+  } else {
+    redirectToSignup();
+  }
+};
 
 export default Feed;

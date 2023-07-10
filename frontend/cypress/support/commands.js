@@ -26,6 +26,13 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get("#password").type(password);
   cy.get("#submit").click();
 })
+
+Cypress.Commands.add('getDate', () => {
+  var date = new Date();
+  date = date.toISOString().split("T")[0];
+  date += "T00:00:00Z";
+  return date;
+})
 //
 //
 // -- This is a child command --

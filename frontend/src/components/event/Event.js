@@ -22,7 +22,7 @@ const Event = (props) => {
       <div className="event-image">
         <img src={props.images[0].url} alt={props.name}/>
       </div>
-      <div className="event-info-container">
+      <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">
           <div>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
@@ -30,7 +30,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className="event-buttons">
-        <form onSubmit={handleLike}>
+        <form onSubmit={handleLike} data-cy="like-button">
         <button type="submit">
           Like
         </button>
