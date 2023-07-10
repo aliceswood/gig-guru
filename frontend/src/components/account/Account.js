@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
+import Event from "../event/Event";
 
 const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
   const [userId] = useState(window.localStorage.getItem("userId"));
-  const [token] = useState(window.localStorage.getItem("token"));
 
   useEffect(() => {
-    // fetch(`/users/${userId}`, {
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(async data => {
-    //   console.log(data);
-    // })
-  })
+    fetch(`/users/${userId}`)
+    .then(response => response.json())
+    .then(async data => {
+      console.log(data.events);
+      setEvents(data.events);
+    })
+  }, [])
 
   return (
     <>
@@ -27,7 +24,7 @@ const Account = ({ navigate }) => {
         Slider placeholder
       </div>
       <div>
-        {events}
+        { events.map((event) => <Event {...event} key={event.id} />)}
       </div>
     </>
   );
