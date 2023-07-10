@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI');
 
 const connectDB = async () => {
-    try {
-      await mongoose.connect(
-        db,
-        {
-          useNewUrlParser: true
-        }
-      );
+  try {
+    const env = 'development';
+    const { MONGODBURI } = config.get(env);
+    console.log(MONGODBURI)
+    await mongoose.connect(MONGODBURI, {
+      useNewUrlParser: true
+    });
 
-      console.log('MongoDB is connected...');
-    } catch (err) {
-        console.log(err.message);
-        process.exit(1);
-    }
-}
+    console.log('MongoDB is connected...');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+    process.exit(1);
+  }
+};
 
 module.exports = connectDB;
