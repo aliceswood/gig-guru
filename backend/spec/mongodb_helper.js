@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const config = require('config');
 const { MONGODBURI } = config.get('test');
 
-console.log('hello')
+console.log('We\'re in the mongoDB helper')
+
+// afterAll( async () => {
+//   await mongoose.disconnect();
+// });
 
 const connectTestDB = async () => {
   try {
