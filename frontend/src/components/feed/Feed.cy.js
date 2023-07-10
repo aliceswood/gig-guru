@@ -1,5 +1,6 @@
 import Feed from "./Feed";
 import { getDate } from "./Feed";
+const navigate = () => {};
 
 beforeEach(() => {
   cy.clock(new Date(), ["Date"]);
@@ -42,4 +43,10 @@ describe("Feed", () => {
       );
     });
   });
+
+  // it("When no token is present, redirects to signup form", () => {
+  //   cy.mount(<Feed />);
+
+  //   cy.get('[data-cy="login-form"]').should("be.visible")
+  // })
 });
