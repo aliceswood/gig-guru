@@ -3,7 +3,7 @@ import './event.css'
 import { Link } from 'react-router-dom';
 
 const Event = (props) => {
-  const viewEvent = `/event/${props.id}`;
+  const ViewEvent = `/event/${props.id}`;
   console.log(props)
 
   const handleLike = async (event) => {
