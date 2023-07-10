@@ -30,7 +30,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className="event-buttons">
-        <form onSubmit={handleLike}>
+        <form onSubmit={handleLike} data-cy="like-button">
         <button type="submit">
           Like
         </button>
