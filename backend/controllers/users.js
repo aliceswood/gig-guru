@@ -34,8 +34,27 @@ const UsersController = {
   },
 
   GetUserId: (req, res) => {
-    const userId = tokenDecoder(req.headers['authorization'].split(' ')[1]).user_id;
-    res.status(201).json({ userId: userId, message: "OK" });
+    const user_id = tokenDecoder(req.headers['authorization'].split(' ')[1]).user_id;
+    res.status(201).json({ userId: user_id, message: "OK" });
+  },
+
+  GetEvents: (req, res) => {
+    const { id } = req.params;
+
+    User.findById(id, (err, user) => {
+      if (err) {
+        res.status(400).send({ message: 'Bad request' });
+      } else {
+        // console.log(id);
+        console.log(typeof req.params.id);
+        console.log(user);
+        if (user) {
+          res.status(200).send({ events: user.liked });
+        } else {
+          res.status(401).send({ message: 'User not found' });
+        }
+      }
+    });
   }
 };
 

@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-  "start": "node app.js",
-  "start:dev": "NODE_ENV=development node app.js",
-  "start:test": "NODE_ENV=test node app.js",
-  "jest": "jest --runInBand",
-  "app": "nodemon app.js"
+    "start": "node app.js",
+    "start:dev": "NODE_ENV=development node app.js",
+    "start:test": "NODE_ENV=test node app.js",
+    "jest": "jest --runInBand",
+    "app": "nodemon app.js"
   },
   "author": "Gig Gurus - Makers Academy",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "dotenv": "^16.3.1",
     "env": "^0.0.2",
     "express": "^4.18.1",
+    "http-errors": "^2.0.0",
     "jest": "^29.6.0",
     "jose": "^4.14.4",
     "jsonwebtoken": "^9.0.0",
