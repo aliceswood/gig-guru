@@ -1,3 +1,5 @@
+// To be updated when liking an event is tested and implemented
+
 import Feed from "../../src/components/feed/Feed";
 import { getDate } from "../../src/components/feed/Feed";
 
