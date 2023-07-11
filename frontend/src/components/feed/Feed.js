@@ -19,7 +19,10 @@ const Feed = ({ navigate }) => {
       `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
     )
       .then((response) => response.json())
-      .then((json) => setData(json._embedded.events))
+      .then((json) => {
+        localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
+        setData(json._embedded.events);
+      })
       .catch((error) => console.error(error));
   }, []);
 
