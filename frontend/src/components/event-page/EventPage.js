@@ -31,7 +31,7 @@ const ViewEvent = () => {
         return (
           <>
             <div>
-              <div >
+              <div data-cy="event-div">
                 {eventInfo}
               </div>
             </div>

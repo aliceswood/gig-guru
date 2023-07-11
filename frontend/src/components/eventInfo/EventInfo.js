@@ -4,7 +4,7 @@ const Event = (props) => {
   console.log(props)
 
   return (
-    <div>{props.name}</div>
+    <div data-cy="event-name">{props.name}</div>
     );
   };
 export default Event;
