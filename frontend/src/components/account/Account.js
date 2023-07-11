@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Event from "../event/Event";
+import LikedEvent from "../likedEvent/LikedEvent";
 
 const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
@@ -15,7 +15,7 @@ const Account = ({ navigate }) => {
   }, [])
 
   
-  var eventsArray = events.map((event) => <Event {...event} key={event.id}/>);
+  var eventsArray = events.map((event) => <LikedEvent {...event} key={event.id}/>);
   
   
     return (
