@@ -1,11 +1,14 @@
 import React from "react";
 import './event.css'
+import { Link } from 'react-router-dom';
 
 const Event = (props) => {
+  const ViewEvent = `/event/${props.id}`;
   console.log(props)
 
   const handleLike = async (event) => {
     event.preventDefault();
+ 
 
     await fetch('/users', {
       method: "PATCH",
@@ -18,6 +21,7 @@ const Event = (props) => {
   }
 
   return (
+    <>
     <div className="flex-container">
       <div className="event-image">
         <img src={props.images[0].url} alt={props.name}/>
@@ -27,6 +31,7 @@ const Event = (props) => {
           <div>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
           <div>Start time: {props.dates.start.localTime}</div>
+          <Link to={ViewEvent} id="View-event-link">More Info</Link>
         </div>
       </div>
       <div className="event-buttons">
@@ -40,8 +45,7 @@ const Event = (props) => {
         </button>
       </div>
     </div>
+  </>
   );
-
-};
-
+  };
 export default Event;
