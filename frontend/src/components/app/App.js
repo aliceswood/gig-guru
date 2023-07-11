@@ -8,7 +8,9 @@ import ViewEvent from '../event-page/EventPage'
 import {
   Routes,
   Route,
-  useNavigate
+  useNavigate,
+  Router,
+  BrowserRouter
 } from "react-router-dom";
 
 const App = () => {

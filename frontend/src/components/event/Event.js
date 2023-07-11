@@ -1,6 +1,6 @@
 import React from "react";
 import './event.css'
-import { Link } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
 
 const Event = (props) => {
   const ViewEvent = `/event/${props.id}`;

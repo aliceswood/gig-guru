@@ -2,15 +2,35 @@ const User = require("../models/user");
 const tokenDecoder = require("../models/token_decoder");
 
 const UsersController = {
+  // Create: (req, res) => {
+  //   const user = new User(req.body);
+  //   user.save((err) => {
+  //     if (err) {
+  //       res.status(400).json({message: 'Bad request'})
+  //     } else {
+  //       res.status(201).json({ message: 'OK' });
+  //     }
+  //   });
+  // },
+
   Create: (req, res) => {
-    const user = new User(req.body);
-    user.save((err) => {
-      if (err) {
-        res.status(400).json({message: 'Bad request'})
+    const checkEmail = req.body.email;
+    
+    User.findOne({ email: checkEmail }).then((user) => {
+      if (user ) {
+        console.log('Account already created')
+        res.status(400).json({ message: 'Account already created' })
       } else {
-        res.status(201).json({ message: 'OK' });
+        const user = new User(req.body);
+        user.save((err) => {
+          if (err) {
+            res.status(400).json({ message: 'Bad request' })
+          } else {
+            res.status(201).json({ message: 'OK' });
+          }
+        });
       }
-    });
+    })
   },
 
   AddEvent: (req, res) => {
