@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventInfo from '../eventInfo/EventInfo'
+import CustomControlsMap from "../map/Map";
 
 const ViewEvent = () => {
     const [data, setData] = useState([]);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
-    // const { id } = useParams()
+    const { id } = useParams()
 
     // useEffect(() => {
     //     fetch(
@@ -15,14 +16,16 @@ const ViewEvent = () => {
     //       .then((json) => setData(json._embedded.events))
     //       .catch((error) => console.error(error));
     // }, []);
+    console.log(id);
 
     useEffect(() => {
       const storedData = localStorage.getItem('apiData');
       if (storedData) {
         const parsedData = JSON.parse(storedData);
-        setData(parsedData);
+        const filteredData = parsedData.filter(event => event.id === id);
+        setData(filteredData);
       }
-    }, []);
+    }, [id]);
 
     // window.localStorage.removeItem('apiData');
 
@@ -33,6 +36,9 @@ const ViewEvent = () => {
             <div>
               <div >
                 {eventInfo}
+              </div>
+              <div>
+                <CustomControlsMap />
               </div>
             </div>
           </>
