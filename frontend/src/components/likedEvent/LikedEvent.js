@@ -1,42 +1,15 @@
 import React from "react";
+import './LikedEvent.css';
 
-const Event = (props) => {
-  // console.log(props)
 
-  const handleLike = async (event) => {
-    event.preventDefault();
-
-    await fetch('/users', {
-      method: "PATCH",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      },
-      body: JSON.stringify(props)
-    })
-  }
-
+const Event = (event) => {
   return (
-    <div className="flex-container">
-      <div className="event-image">
-        <img src={props.images[0].url} alt={props.name}/>
-      </div>
-      <div className="event-info-container" data-cy="event-info-container">
-        <div className="event-information">
-          <div>{props.name} @ {props._embedded.venues[0].name}</div>
-          <div>Date: {props.dates.start.localDate}</div>
-          <div>Start time: {props.dates.start.localTime}</div>
+    <div className="carousel-item">
+      <div className="liked-event-holder">
+        {/* { JSON.stringify(event) } */}
+        <div className="event-img">
+          <img src={event.images[3].url} alt={event.name}/>
         </div>
-      </div>
-      <div className="event-buttons">
-        <form onSubmit={handleLike} data-cy="like-button">
-        <button type="submit">
-          Like
-        </button>
-        </form>
-        <button>
-          Not interested
-        </button>
       </div>
     </div>
   );

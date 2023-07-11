@@ -1,0 +1,11 @@
+.liked-event-holder {
+  padding: 50px 0px;
+  margin: 0px 15px;
+  height: 500px;
+  width: 300px;
+  background-color: grey;
+}
+
+.event-img > img {
+  max-width: 100%;
+}
