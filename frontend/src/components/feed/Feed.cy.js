@@ -1,3 +1,4 @@
+import { MemoryRouter } from "react-router-dom";
 import Feed from "./Feed";
 import { getDate } from "./Feed";
 const navigate = () => {};
@@ -31,7 +32,13 @@ describe("Feed", () => {
         });
       }
     ).as("getEvents");
-    cy.mount(<Feed />);
+
+
+    cy.mount(
+      <MemoryRouter>
+        <Feed navigate={navigate}/>
+      </MemoryRouter>
+    );
 
     // cy.get("[data-cy='feed']").should("be.visible");
     cy.wait("@getEvents").then(() => {
