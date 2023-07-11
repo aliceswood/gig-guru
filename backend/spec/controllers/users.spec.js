@@ -42,6 +42,21 @@ describe("/users", () => {
       expect(newUser.email).toEqual("users@exampletest.com")
       expect(newUser.username).toEqual("user1")
     });
+
+    test("no user is created when account is already signed up", async () => {
+      const user = {email: "users@exampletest.com", password: "1234", username: "user1"}
+
+      await request(app)
+        .post("/users")
+        .send(user)
+
+      let response = await request(app)
+        .post("/users")
+        .send(user)
+      
+        expect(response.statusCode).toBe(400)
+        expect(response.body.message).toBe("Account already created")
+    })
   });
 
   describe("PATCH, when a user likes an event", () => {
