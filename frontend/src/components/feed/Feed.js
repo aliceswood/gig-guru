@@ -12,9 +12,8 @@ export const getDate = () => {
 const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  const [selectedCity, setSelectedCity] = useState('');
-
   const date = getDate();
+  const [selectedCity, setSelectedCity] = useState('');
   
   useEffect(() => {
     if (selectedCity !== "") {
@@ -39,6 +38,7 @@ const Feed = ({ navigate }) => {
 
   const logout = () => {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem('apiData');
     setToken(null);
     navigate("/login");
   };

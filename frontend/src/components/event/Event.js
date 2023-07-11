@@ -1,6 +1,6 @@
 import React from "react";
 import './event.css'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Event = (props) => {
   const ViewEvent = `/event/${props.id}`;
@@ -20,6 +20,11 @@ const Event = (props) => {
     })
   }
 
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(ViewEvent)
+  }
+
   return (
     <>
     <div className="flex-container">
@@ -28,10 +33,10 @@ const Event = (props) => {
       </div>
       <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">
-          <div>{props.name} @ {props._embedded.venues[0].name}</div>
+          <div data-cy={props.name}>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
           <div>Start time: {props.dates.start.localTime}</div>
-          <Link to={ViewEvent} id="View-event-link">More Info</Link>
+          <button id="View-event-button" data-cy="more-info-button" onClick={handleClick}>More Info</button>
         </div>
       </div>
       <div className="event-buttons">
@@ -48,4 +53,5 @@ const Event = (props) => {
   </>
   );
   };
+
 export default Event;

@@ -12,5 +12,6 @@ describe("Event", () => {
     cy.mount(<Event {...props} />);
     cy.get('[data-cy="event-info-container"]').should("have.class", "event-info-container");
     cy.get('[data-cy="event-info-container"]').should("contain.text", "Alice", "2023/07/07", "19:00:00");
+    cy.get('[data-cy="more-info-button"]').should('be.visible')
   });
 });

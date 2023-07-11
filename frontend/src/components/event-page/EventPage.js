@@ -18,6 +18,7 @@ const ViewEvent = () => {
     // }, []);
     console.log(id);
 
+
     useEffect(() => {
       const storedData = localStorage.getItem('apiData');
       if (storedData) {
@@ -27,14 +28,14 @@ const ViewEvent = () => {
       }
     }, [id]);
 
-    // window.localStorage.removeItem('apiData');
+    console.log(data)
 
-      const eventInfo = data.map((event) => <EventInfo {...event} key={event.id} />);
+    const eventInfo = data.map((event) => <EventInfo {...event} key={event.id} />)
 
         return (
           <>
             <div>
-              <div >
+              <div data-cy="event-div">
                 {eventInfo}
               </div>
               <div>
