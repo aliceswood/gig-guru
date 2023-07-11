@@ -12,7 +12,6 @@ const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const date = getDate();
-  console.log("date is2:", date);
 
   useEffect(() => {
     fetch(
@@ -28,6 +27,7 @@ const Feed = ({ navigate }) => {
 
   const logout = () => {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem('apiData');
     setToken(null);
     navigate("/login");
   };
