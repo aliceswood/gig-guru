@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Event from "../event/Event";
+import Event from '../event/Event'
+import city_names from '../cities/Cities'
 
 export const getDate = () => {
   var date = new Date();
@@ -12,18 +13,28 @@ const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const date = getDate();
-
+  const [selectedCity, setSelectedCity] = useState('');
+  
   useEffect(() => {
-    fetch(
-      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
-    )
-      .then((response) => response.json())
-      .then((json) => {
+    if (selectedCity !== "") {
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+       .then((response) => response.json())
+       .then((json) => {
         localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
         setData(json._embedded.events);
       })
       .catch((error) => console.error(error));
-  }, []);
+    } else {
+      fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+       .then((response) => response.json())
+       .then((json) => {
+        localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
+        setData(json._embedded.events);
+      })
+      .catch((error) => console.error(error));
+    }
+  }, [selectedCity]);
+
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -48,9 +59,13 @@ const Feed = ({ navigate }) => {
         <div>
           This page has rendered
           <div>
-            <button type="button" id="logout" onClick={logout}>
-              Logout
-            </button>
+            <button type="button" id="logout" onClick={logout}>Logout</button>
+            <label for="city-selector">Choose a location: </label>
+            <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
+
+            <datalist id="cities">
+              {city_names.map(city => <option value={city}></option>)}
+            </datalist>
           </div>
           <div data-cy="feed">
             {date.toString()}
