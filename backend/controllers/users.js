@@ -68,9 +68,9 @@ const UsersController = {
       } else {
         // console.log(id);
         console.log(typeof req.params.id);
-        console.log(user);
+        console.log(user.username);
         if (user) {
-          res.status(200).send({ events: user.liked });
+          res.status(200).send({ events: user.liked, username: user.username });
         } else {
           res.status(401).send({ message: 'User not found' });
         }
