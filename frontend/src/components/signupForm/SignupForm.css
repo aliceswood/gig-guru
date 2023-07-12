@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.signUpContainer{
+  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
+  background-size: cover; 
+  height: 100vh;
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signUpForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  background: black;
+  min-width: 25%;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 25px 25px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.formInput {
+  margin: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  width: 250px;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  color: black;
+}
+
+.formInput:focus{
+ outline: none;
+}
+
+
+.signUpHeading{
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+  font-size:45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button{
+  margin: 5px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: whitesmoke;
+  transition: 0.5s ease-in-out;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.button:hover {
+  color: hsl(181, 83%, 32%);
+  border: 2px solid hsl(181, 83%, 32%);
+
+}
+
+.redirectButton{
+  margin: 5px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 10px;
+  color: whitesmoke;
+  transition: 0.5s ease-in-out;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px) saturate(180%);
+}
+
+.redirectButton:hover {
+  color: hsl(181, 83%, 32%);
+  border: 2px solid hsl(181, 83%, 32%);
+}
