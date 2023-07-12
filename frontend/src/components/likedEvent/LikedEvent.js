@@ -10,6 +10,9 @@ const Event = (event) => {
         <div className="event-img">
           <img src={event.images[3].url} alt={event.name}/>
         </div>
+        <div>
+          { event.name }
+        </div>
       </div>
     </div>
   );
