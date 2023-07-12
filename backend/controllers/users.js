@@ -25,21 +25,33 @@ const UsersController = {
   AddEvent: (req, res) => {
     const user_id = tokenDecoder(req.headers['authorization'].split(' ')[1]).user_id;
     const event = req.body;
-  
-    User.findOneAndUpdate(
-      { _id: user_id },
-      { $push: { liked: event } },
-      { new: true },
-      (err, user) => {
-        if (err) {
-          res.status(500).json({ message: 'Internal Server Error' });
-        } else if (!user) {
-          res.status(404).json({ message: 'User not found' });
+    const event_id = req.body.id;
+    
+    User.findById(user_id, (err, user) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal Server Error' });
+      } else if (!user) {
+        res.status(404).json({ message: 'User not found' });
+      } else {
+        const eventExists = user.liked.find((likedEvent) => likedEvent.id === event_id);
+        if (eventExists) {
+          res.status(400).json({ message: 'Event already exists' });
         } else {
-          res.status(200).json({ message: 'Event added successfully' });
+          User.findOneAndUpdate(
+            { _id: user_id },
+            { $push: { liked: event } },
+            { new: true },
+            (err,user) => {
+              if (err) {
+                res.status(500).json({ message: 'Internal Server Error' });
+              } else {
+                res.status(200).json({ message: 'Event added successfully' });
+              }
+            }
+          );
         }
       }
-    );
+    });
   },
 
   GetUserId: (req, res) => {
