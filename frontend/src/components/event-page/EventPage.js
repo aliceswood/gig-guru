@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventInfo from '../eventInfo/EventInfo'
-
-import "./EventPage.css"
+import "./MovingGradient.css"
+// import "./EventPage.css"
 
 const ViewEvent = () => {
     const [data, setData] = useState([]);
