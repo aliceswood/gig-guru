@@ -33,7 +33,6 @@ describe("Feed", () => {
     ).as("getEvents");
     cy.mount(<Feed />);
 
-    // cy.get("[data-cy='feed']").should("be.visible");
     cy.wait("@getEvents").then(() => {
       cy.get('[data-cy="event-info-container"]').should(
         "contain.text",
@@ -43,10 +42,4 @@ describe("Feed", () => {
       );
     });
   });
-
-  // it("When no token is present, redirects to signup form", () => {
-  //   cy.mount(<Feed />);
-
-  //   cy.get('[data-cy="login-form"]').should("be.visible")
-  // })
 });
