@@ -12,5 +12,6 @@ describe("User model", () => {
     expect(user.password).toEqual("password");
     expect(user.username).toEqual("username1");
     expect(user.email).toEqual("someone@example.com");
+    expect(user.liked).toEqual([]);
   });
 })

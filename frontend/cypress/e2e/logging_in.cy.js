@@ -20,7 +20,7 @@ describe("Logging In", () => {
     cy.url().should("include", "/login");
   });
 
-  it("with valid credentials, redirects to '/posts'", () => {
+  it("with valid credentials, redirects to '/'", () => {
     cy.visit("/login");
     cy.get("#email").type("user@email.com");
     cy.get("#password").type("12345678");

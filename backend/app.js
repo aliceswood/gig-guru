@@ -1,7 +1,9 @@
 // app.js
 
+const createError = require("http-errors");
 const express = require('express');
 const connectDB = require('./config/db');
+const connectTestDB = require('./spec/mongodb_helper')
 const bp = require('body-parser');
 var cors = require('cors');
 const path = require("path");
@@ -12,8 +14,18 @@ const tokensRouter = require("./routes/tokens");
 
 const app = express();
 
+let port = null
+
 // Connect to the database
-connectDB();
+if(process.env.NODE_ENV === 'test') {
+  console.log('probably jest is running this')
+  connectTestDB()
+} else {
+  console.log(process.env.NODE_ENV)
+  connectDB();
+  port = 8082
+  app.listen(port, () => console.log(`Listening on port ${port}`))
+}
 
 // use body-parser
 app.use(bp.json());
@@ -29,12 +41,6 @@ app.use('/users', usersRouter);
 app.use("/tokens", tokensRouter);
 
 // const port = process.env.NODE_ENV === 'test' ? 9999 : 8082 || 8082;
-const port = 8082;
-
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(port, () => console.log(`Listening on port ${port}`))
-}
-// app.listen(port,  () => console.log(`Server running on port ${port}`));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

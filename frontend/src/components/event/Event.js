@@ -1,9 +1,33 @@
 import React from "react";
 import './event.css'
+import { useNavigate } from 'react-router-dom';
 
 const Event = (props) => {
-  console.log(props)
+
+  const ViewEvent = `/event/${props.id}`;
+  console.log(`This is the Event.js component ${props}`)
+
+  const handleLike = async (event) => {
+    event.preventDefault();
+ 
+
+    await fetch('/users', {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify(props)
+    })
+  }
+
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(ViewEvent)
+  }
+
   return (
+    <>
     <div className="entireEvent">
     <div className="flex-container">
       <div className="event-image">
@@ -11,20 +35,23 @@ const Event = (props) => {
       </div>
       <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">
-          <div>{props.name} @ {props._embedded.venues[0].name}</div>
+          <div data-cy={props.name}>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
           <div>Start time: {props.dates.start.localTime}</div>
+          <button id="View-event-button" data-cy="more-info-button" onClick={handleClick}>More Info</button>
         </div>
       </div>
-      <div>
-        <button className="likeButton">
+      <div className="event-buttons">
+        <form onSubmit={handleLike} data-cy="like-button">
+        <button type="submit" className="likeButton">
           Interested?
         </button>
+        </form>
         </div>
       </div>
     </div>
+  </>
   );
-
-};
+  };
 
 export default Event;
