@@ -74,7 +74,6 @@ const Feed = ({ navigate }) => {
             <div id="city-selector-container">
               <label for="city-selector">Choose a location: </label>
               <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
-
               <datalist id="cities">
                 {city_names.map(city => <option value={city}></option>)}
               </datalist>
