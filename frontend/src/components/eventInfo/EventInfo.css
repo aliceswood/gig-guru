@@ -7,7 +7,7 @@
   margin-top: 75px;
   border-radius: 25px;
   box-sizing: border-box;
-  background: rgba(245, 245, 245, 0.586);
+  background: rgba(245, 245, 245, 0.382);
   backdrop-filter: blur(16px);
   box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
   border: 1px solid hsl(182, 87%, 5%);

@@ -1,6 +1,8 @@
 import React from "react";
 import "./EventInfo.css";
 import CustomControlsMap from "../map/Map";
+import { AiOutlineCalendar } from "react-icons/ai"
+import { SlLocationPin } from "react-icons/sl"
 
 const EventInfo = (props) => {
 
@@ -16,22 +18,22 @@ const EventInfo = (props) => {
         <div id="event-title" data-cy="event-name">
           {props.name}
         </div>
-        {/* <div id="time-container">
-          <img className="calendar" src="calendar.svg" alt="calendar" /> */}
+        <div id="time-container">
+          <AiOutlineCalendar/>
           <div id="event-time">
             <div data-cy="event-date">Date: {props.dates.start.localDate}</div>
             <div data-cy="event-time">Time: {props.dates.start.localTime}</div>
           </div>
-        {/* </div> */}
-        {/* <div id="venue-container">
-          <img className="location" src="location.jpeg" alt="location" /> */}
+        </div>
+        <div id="venue-container">
+          <SlLocationPin/>
           <div id="venue-details">
             <div data-cy="event-venue">{props._embedded.venues[0].name}</div>
             <div data-cy="event-postalcode">
               {props._embedded.venues[0].postalCode}
             </div>
           </div>
-        {/* </div> */}
+        </div>
         <div id="map">
           <CustomControlsMap />
         </div>
