@@ -18,9 +18,6 @@ const SessionsController = {
         res.status(401).json({ message: "auth error" });
       } else {
         const token = await TokenGenerator.jsonwebtoken(user.id)
-        // window.localStorage.setItem("user_id", "test")
-        // console.log("window storage: " + window.localStorage);
-        // console.log(window.localStorage);
         res.status(201).json({ token: token, message: "OK" });
       }
     }
