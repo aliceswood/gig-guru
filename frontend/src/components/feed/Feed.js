@@ -17,44 +17,40 @@ const Feed = ({ navigate }) => {
   const [selectedCity, setSelectedCity] = useState('');
   
   useEffect(() => {
-    if (selectedCity !== "") {
-    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
-       .then((response) => response.json())
-       .then((json) => {
-        localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
-        setData(json._embedded.events);
-      })
-      .catch((error) => console.error(error))
-      .then(fetch("/users", {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(async data => {
-          window.localStorage.setItem("userId", data.userId)
-          setId(window.localStorage.getItem("userId"))
-        }));
-    } else {
-      fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
-       .then((response) => response.json())
-       .then((json) => {
-        localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
-        setData(json._embedded.events);
-      })
-      .catch((error) => console.error(error))
-      .then(fetch("/users", {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => response.json())
-        .then(async data => {
-          window.localStorage.setItem("userId", data.userId)
-          setId(window.localStorage.getItem("userId"))
-        }));
+    const city = () => {
+      if (selectedCity === '') {
+        return 'London'
+      } else if (selectedCity === 'shuffle') {
+        const randomIndex = Math.floor(Math.random() * city_names.length);
+        setSelectedCity(city_names[randomIndex]);
+        return city_names[randomIndex];
+      } else {
+        return selectedCity
+      }
     }
-  }, [selectedCity]);
+
+    fetch(
+      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        localStorage.setItem("apiData", JSON.stringify(json._embedded.events));
+        setData(json._embedded.events);
+      })
+      .catch((error) => console.error(error));
+      
+    fetch("/users", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        window.localStorage.setItem("userId", data.userId);
+        setId(window.localStorage.getItem("userId"));
+      })
+      .catch((error) => console.error(error));
+  }, [selectedCity, date, token]);
 
 
   const logout = () => {
@@ -75,6 +71,17 @@ const Feed = ({ navigate }) => {
     navigate("/signup");
   }
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const selectedCity = document.getElementById('city-selector').value;
+    setSelectedCity(selectedCity);
+    document.getElementById('city-selector').value = '';
+  }
+
+  const shuffle = () => {
+    setSelectedCity('shuffle')
+  }
+
   const eventList = data.map((event) => <Event {...event} key={event.id} />);
 
   if (!data.length) {
@@ -93,11 +100,13 @@ const Feed = ({ navigate }) => {
               Your Profile
             </button>
             <label for="city-selector">Choose a location: </label>
-            <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
+            <form>
+            <input placeholder="City (default: London)" type="text" id="city-selector" name="city-selector"  />
+            <button value={selectedCity} onClick={handleSearch}>Search</button>
 
-            <datalist id="cities">
-              {city_names.map(city => <option value={city}></option>)}
-            </datalist>
+            <button type="button" id="shuffle" onClick={shuffle}>Shuffle</button>
+            </form>
+
           </div>
           <div data-cy="feed">
             {date.toString()}

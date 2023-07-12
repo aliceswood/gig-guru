@@ -10,7 +10,20 @@ describe("Feed", () => {
   it("Calls the / endpoint and lists all the events", () => {
     const date = getDate();
     window.localStorage.setItem("token", "fakeToken");
-
+    
+    cy.intercept("/users",
+      (req) => {
+        req.reply({
+          statusCode: 200,
+          body: {
+            userId: "fakeUserId",
+            email: "fakeEmail@example.com",
+            name: "Fake User",
+          },
+        });
+      }
+    ).as("getUsers");
+    
     cy.intercept(
       `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`,
       (req) => {
@@ -31,15 +44,16 @@ describe("Feed", () => {
         });
       }
     ).as("getEvents");
-    cy.mount(<Feed />);
 
-    cy.wait("@getEvents").then(() => {
-      cy.get('[data-cy="event-info-container"]').should(
-        "contain.text",
-        "Alice",
-        "2023/07/07",
-        "19:00:00"
-      );
-    });
+    cy.wait("@getUsers").then(() => {
+      cy.wait("@getEvents").then(() => {
+        cy.get('[data-cy="event-info-container"]').should(
+          "contain.text",
+          "Alice",
+          "2023/07/07",
+          "19:00:00"
+        );
+      });
+    })
   });
 });
