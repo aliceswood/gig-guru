@@ -51,14 +51,14 @@ const Feed = ({ navigate }) => {
   }, [selectedCity]);
 
 
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem('apiData');
-    window.localStorage.removeItem("userId");
-    setToken(null);
-    setId(null);
-    navigate("/login");
-  };
+  // const logout = () => {
+  //   window.localStorage.removeItem("token");
+  //   window.localStorage.removeItem('apiData');
+  //   window.localStorage.removeItem("userId");
+  //   setToken(null);
+  //   setId(null);
+  //   navigate("/login");
+  // };
 
   const navToUserPage = () => {
     // navigate(`/${userId}`)
@@ -78,7 +78,7 @@ const Feed = ({ navigate }) => {
           This page has rendered
           <p>{userId}</p>
           <div>
-            <button type="button" id="logout" onClick={logout}>Logout</button>
+            {/* <button type="button" id="logout" onClick={logout}>Logout</button> */}
             <button type="button" id="user-page-btn" onClick={navToUserPage}>
               Your Profile
             </button>
