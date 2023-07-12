@@ -4,7 +4,7 @@
   background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
   background-repeat: no-repeat; 
   background-size: cover; 
-  padding-top: 50px;
+  /* padding-top: 1px; */
   /* height: 100vh; */
 }
 
@@ -13,5 +13,14 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 100px;
+}
+
+#city-selector-container {
+  /* text-align: left; */
   /* background-color: red; */
+  font-size: 25px;
+}
+
+#city-selector {
+  font-size: 25px;
 }

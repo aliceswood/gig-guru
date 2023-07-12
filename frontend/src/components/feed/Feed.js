@@ -71,18 +71,16 @@ const Feed = ({ navigate }) => {
       <>
         <div className='feedPage'>
           <div className='flex-column'>
-            <div>
+            <div id="city-selector-container">
               <label for="city-selector">Choose a location: </label>
               <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
 
               <datalist id="cities">
                 {city_names.map(city => <option value={city}></option>)}
               </datalist>
+              <div id="current-location">Current location: { displayCityName }</div>
             </div>
-            <div data-cy="feed">
-              <div id="current-location">
-                Current location: { displayCityName }
-              </div>
+            <div id="feed" data-cy="feed">
               <div id="event-list">
                 {eventList}
               </div>
