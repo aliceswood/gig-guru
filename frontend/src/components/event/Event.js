@@ -3,8 +3,9 @@ import './event.css'
 import { useNavigate } from 'react-router-dom';
 
 const Event = (props) => {
+
   const ViewEvent = `/event/${props.id}`;
-  console.log(props)
+  console.log(`This is the Event.js component ${props}`)
 
   const handleLike = async (event) => {
     event.preventDefault();

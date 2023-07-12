@@ -12,6 +12,7 @@ export const getDate = () => {
 const Feed = ({ navigate }) => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [userId, setId] = useState("");
   const date = getDate();
   const [selectedCity, setSelectedCity] = useState('');
   
@@ -33,15 +34,32 @@ const Feed = ({ navigate }) => {
       })
       .catch((error) => console.error(error));
     }
+    .then(fetch("/users", {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(response => response.json())
+      .then(async data => {
+        window.localStorage.setItem("userId", data.userId)
+        setId(window.localStorage.getItem("userId"))
+      }));
   }, [selectedCity]);
 
 
   const logout = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem('apiData');
+    window.localStorage.removeItem("userId");
     setToken(null);
+    setId(null);
     navigate("/login");
   };
+
+  const navToUserPage = () => {
+    // navigate(`/${userId}`)
+    navigate("/account");
+  }
 
   const redirectToSignup = () => {
     navigate("/signup");
@@ -58,8 +76,12 @@ const Feed = ({ navigate }) => {
       <>
         <div>
           This page has rendered
+          <p>{userId}</p>
           <div>
             <button type="button" id="logout" onClick={logout}>Logout</button>
+            <button type="button" id="user-page-btn" onClick={navToUserPage}>
+              Your Profile
+            </button>
             <label for="city-selector">Choose a location: </label>
             <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
 
