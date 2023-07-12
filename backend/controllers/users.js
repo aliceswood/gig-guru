@@ -24,17 +24,19 @@ const UsersController = {
 
   AddEvent: (req, res) => {
     const user_id = tokenDecoder(req.headers['authorization'].split(' ')[1]).user_id;
-    const event = req.body;
-  
+    const event_id = req.body.event_id;
+    console.log(event_id)  
+
     User.findOneAndUpdate(
-      { _id: user_id },
-      { $push: { liked: event } },
+      { _id: user_id, liked: { $ne: event_id } }, //Checks if the event is not already in the liked array
+      { $push: { liked: event_id } },
       { new: true },
       (err, user) => {
         if (err) {
           res.status(500).json({ message: 'Internal Server Error' });
         } else if (!user) {
-          res.status(404).json({ message: 'User not found' });
+            console.log('Event already liked');
+          res.status(404).json({ message: 'Event already liked by user' });
         } else {
           res.status(200).json({ message: 'Event added successfully' });
         }
