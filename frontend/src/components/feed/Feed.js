@@ -90,7 +90,7 @@ const Feed = ({ navigate }) => {
   if (token) {
     return (
       <>
-       <div className='feedPage'>
+        <div className='feedPage'>
           <div className='flex-column'>
             <div id="city-selector-container">
               <label for="city-selector">Choose a location: </label>
