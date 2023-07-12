@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SignupForm.css'
 
 const SignupForm = ({ navigate }) => {
   const [email, setEmail] = useState('')
@@ -43,15 +44,16 @@ const SignupForm = ({ navigate }) => {
   }
 
   return (
-    <div className="signUpContainer">
-      <div>
-        <button type="button" id="login" onClick={login}>Log in!</button>
-      </div>
-       <form onSubmit={handleSubmit}>
-            <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
-            <input placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
-            <input placeholder="Username" id="username" type='text' value={ username } onChange={handleUsernameChange} />
-          <input id='submit' type="submit" value="Submit" />
+    <div className='signUpContainer'>
+        <form className='signUpForm' onSubmit={handleSubmit}>
+          <h1 className='signUpHeading'>Welcome to Gig Guru</h1>
+          <input className="formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
+          <input className="formInput" placeholder="Username" id="username" type='text' value={ username } onChange={handleUsernameChange} />
+          <input className="formInput" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
+          <input className="button" id='submit' type="submit" value="Submit" />
+          <div>
+            <button className="redirectButton" type="button" id="login" onClick={login}>Already have an account?</button>
+          </div>
         </form>
     </div>
   );

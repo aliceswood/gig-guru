@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.feedPage {
+  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  height: 100vh;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo img{
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 40px;
+  margin-left: 1300px
+}
+
+object-fit: cover;
+height: 100%;
+width: 110%;

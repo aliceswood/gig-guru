@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import "./LoginForm.css";
+import "./LoginForm.css";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -50,14 +50,15 @@ const LogInForm = ({ navigate }) => {
 
     return (
       <>
-        <div className="login-form">
+        <div className='LogInContainer'>
+          <form className="logInForm" onSubmit={handleSubmit}>
+          <h1 className='logInHeading'>Log in</h1>
+            <input className="formInput" placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
+            <input className="formInput" placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
+            <input className="button" id='submit' type="submit" value="Submit" />
           <div>
-            <button type="button" id="signup" onClick={signup}>Signup!</button>
+            <button className="redirectButton" type="button" id="signup" onClick={signup}>Don't have an account?</button>
           </div>
-          <form onSubmit={handleSubmit}>
-            <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
-            <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
-            <input id='submit' type="submit" value="Submit" />
           </form>
         </div>
       </>

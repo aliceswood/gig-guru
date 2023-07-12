@@ -24,7 +24,17 @@ const Feed = ({ navigate }) => {
         localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
         setData(json._embedded.events);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .then(fetch("/users", {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(response => response.json())
+        .then(async data => {
+          window.localStorage.setItem("userId", data.userId)
+          setId(window.localStorage.getItem("userId"))
+        }));
     } else {
       fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
        .then((response) => response.json())
@@ -32,18 +42,18 @@ const Feed = ({ navigate }) => {
         localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
         setData(json._embedded.events);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .then(fetch("/users", {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(response => response.json())
+        .then(async data => {
+          window.localStorage.setItem("userId", data.userId)
+          setId(window.localStorage.getItem("userId"))
+        }));
     }
-    .then(fetch("/users", {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      .then(response => response.json())
-      .then(async data => {
-        window.localStorage.setItem("userId", data.userId)
-        setId(window.localStorage.getItem("userId"))
-      }));
   }, [selectedCity]);
 
 

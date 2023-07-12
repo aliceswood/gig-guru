@@ -28,6 +28,7 @@ const Event = (props) => {
 
   return (
     <>
+    <div className="entireEvent">
     <div className="flex-container">
       <div className="event-image">
         <img src={props.images[0].url} alt={props.name}/>
@@ -42,13 +43,11 @@ const Event = (props) => {
       </div>
       <div className="event-buttons">
         <form onSubmit={handleLike} data-cy="like-button">
-        <button type="submit">
-          Like
+        <button type="submit" className="likeButton">
+          Interested?
         </button>
         </form>
-        <button>
-          Not interested
-        </button>
+        </div>
       </div>
     </div>
   </>
