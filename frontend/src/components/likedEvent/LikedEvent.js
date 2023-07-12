@@ -1,10 +1,18 @@
 import React from "react";
 import './LikedEvent.css';
+import {useNavigate} from "react-router-dom";
 
 
 const Event = (event) => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/event/${event.id}`);
+  };
+
   return (
-    <div className="carousel-item">
+    <div className="carousel-item" onClick={handleClick}>
       <div className="liked-event-holder">
         {/* { JSON.stringify(event) } */}
         <div className="event-img">

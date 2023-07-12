@@ -9,10 +9,15 @@ const Account = ({ navigate }) => {
   useEffect(() => {
     fetch(`/users/${userId}`)
     .then(response => response.json())
-    .then(async data => {
-      setEvents(data.events);
-    })
-  }, [])
+    .then((json) => {
+      localStorage.setItem('apiData', JSON.stringify(json.events));
+      console.log(json.events);
+      setEvents(json.events);
+  })
+    // .then(async data => {
+    //   setEvents(data.events);
+    // })
+}, [])
   
     return (
     <>
@@ -27,7 +32,7 @@ const Account = ({ navigate }) => {
         { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
       </div>
     </>
-  );
-}
+    );
+  };
 
 export default Account;
