@@ -14,9 +14,6 @@ const Account = ({ navigate }) => {
       console.log(json.events);
       setEvents(json.events);
   })
-    // .then(async data => {
-    //   setEvents(data.events);
-    // })
 }, [])
   
     return (
