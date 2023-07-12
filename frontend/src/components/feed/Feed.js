@@ -27,7 +27,7 @@ const Feed = ({ navigate }) => {
       window.localStorage.setItem("userId", data.userId)
       setId(window.localStorage.getItem("userId"))
       if (selectedCity !== "") {
-      fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+      fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
          .then((response) => response.json())
          .then((json) => {
           localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
@@ -35,7 +35,7 @@ const Feed = ({ navigate }) => {
         })
         .catch((error) => console.error(error))
       } else {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
          .then((response) => response.json())
          .then((json) => {
           localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
