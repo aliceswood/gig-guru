@@ -1,0 +1,54 @@
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 75px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background: rgba(245, 245, 245, 0.586);
+  backdrop-filter: blur(16px);
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid hsl(182, 87%, 5%);
+  max-width: 700px;
+  justify-content: center;
+  height: 60%;
+}
+
+#image {
+  align-self: center;
+  min-height: 150px;
+  max-height: 300px;
+  min-width: 300px;
+  max-width: 400px;
+  justify-content: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  border: 1px solid hsl(182, 87%, 5%);
+}
+
+
+#map {
+  /* padding: 50px, 40px; */
+  border-radius: 25px;
+  align-self: center;
+  padding: 20px;
+  align-self: center;
+}
+
+#event-title {
+  margin: auto;
+  margin-top: 40px;
+  font-weight: bold;
+
+}
+
+#event-time {
+  margin: auto;
+  margin-top: 10px;
+}
+
+#venue-details {
+  margin: auto;
+  margin-top: 10px;
+}

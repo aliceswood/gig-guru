@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventInfo from '../eventInfo/EventInfo'
-import CustomControlsMap from "../map/Map";
+
+import "./EventPage.css"
 
 const ViewEvent = () => {
     const [data, setData] = useState([]);
@@ -34,12 +35,11 @@ const ViewEvent = () => {
 
         return (
           <>
-            <div>
-              <div data-cy="event-div">
-                {eventInfo}
-              </div>
+            <div className="event-page-background">
               <div>
-                <CustomControlsMap />
+                <div data-cy="event-div">
+                  {eventInfo}
+                </div>
               </div>
             </div>
           </>
