@@ -12,7 +12,7 @@ const Event = (event) => {
   };
 
   return (
-    <div className="carousel-item" onClick={handleClick}>
+    <div className="carousel-item" data-cy='clickable-carousel-item' onClick={handleClick}>
       <div className="liked-event-holder">
         {/* { JSON.stringify(event) } */}
         <div className="event-img">

@@ -89,7 +89,7 @@ const Feed = ({ navigate }) => {
           <p>{userId}</p>
           <div>
             <button type="button" id="logout" onClick={logout}>Logout</button>
-            <button type="button" id="user-page-btn" onClick={navToUserPage}>
+            <button type="button" id="user-page-btn" data-cy="user-page-button" onClick={navToUserPage}>
               Your Profile
             </button>
             <label for="city-selector">Choose a location: </label>
