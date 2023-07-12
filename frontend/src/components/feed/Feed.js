@@ -17,33 +17,37 @@ const Feed = ({ navigate }) => {
   const [selectedCity, setSelectedCity] = useState('');
   
   useEffect(() => {
-    fetch("/users", {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    .then(response => response.json())
-    .then(async data => {
-      window.localStorage.setItem("userId", data.userId)
-      setId(window.localStorage.getItem("userId"))
-      if (selectedCity !== "") {
-      fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
-         .then((response) => response.json())
-         .then((json) => {
-          localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
-          setData(json._embedded.events);
-        })
-        .catch((error) => console.error(error))
-      } else {
-        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
-         .then((response) => response.json())
-         .then((json) => {
-          localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
-          setData(json._embedded.events);
-        })
-        .catch((error) => console.error(error))
-      }
-    })
+    if (token) {
+      fetch("/users", {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(response => response.json())
+      .then(async data => {
+        window.localStorage.setItem("userId", data.userId)
+        setId(window.localStorage.getItem("userId"))
+        if (selectedCity !== "") {
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${selectedCity}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+           .then((response) => response.json())
+           .then((json) => {
+            localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
+            setData(json._embedded.events);
+          })
+          .catch((error) => console.error(error))
+        } else {
+          fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`)
+           .then((response) => response.json())
+           .then((json) => {
+            localStorage.setItem('apiData', JSON.stringify(json._embedded.events));
+            setData(json._embedded.events);
+          })
+          .catch((error) => console.error(error))
+        }
+      })
+    } else {
+      navigate("/signup")
+    }
   }, [selectedCity]);
 
 
@@ -59,10 +63,6 @@ const Feed = ({ navigate }) => {
   const navToUserPage = () => {
     // navigate(`/${userId}`)
     navigate("/account");
-  }
-
-  const redirectToSignup = () => {
-    navigate("/signup");
   }
 
   const eventList = data.map((event) => <Event {...event} key={event.id} />);
@@ -96,8 +96,6 @@ const Feed = ({ navigate }) => {
         </div>
       </>
     );
-  } else {
-    redirectToSignup();
   }
 };
 
