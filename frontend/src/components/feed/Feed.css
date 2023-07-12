@@ -4,8 +4,8 @@
   background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
   background-repeat: no-repeat; 
   background-size: cover; 
-  /* padding-top: 1px; */
-  height: 110vh;
+  padding-top: 1px;
+  min-height: 110vh;
 }
 
 .flex-column {

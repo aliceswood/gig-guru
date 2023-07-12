@@ -11,7 +11,8 @@ const Account = ({ navigate }) => {
     .then(response => response.json())
     .then((json) => {
       localStorage.setItem('apiData', JSON.stringify(json.events));
-      console.log(json.events);
+      // console.log(json.events);
+      console.log(json.username);
       setEvents(json.events);
   })
 }, [])
