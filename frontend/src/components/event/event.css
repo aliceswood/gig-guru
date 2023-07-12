@@ -14,7 +14,7 @@
   flex-direction: column;
   margin-top: 50px;
   margin-left: 30px;
-  border-radius: 10px;
+  border-radius: 25px;
   box-sizing: border-box;
   background: rgba(245, 245, 245, 0.586);
   backdrop-filter: blur(16px);
@@ -26,7 +26,6 @@
 
 .flex-container div {
   margin: 10px;
-  
 }
 
 .event-image {
@@ -59,8 +58,9 @@
   background-color : transparent;
   padding: 10px;
   outline: none;
-  border-radius: 10px;
-  margin-top: 50px
+  border-radius: 100px;
+  margin-top: 15px;
+  width: 150px;
 }
 
 .likeButton:hover {
