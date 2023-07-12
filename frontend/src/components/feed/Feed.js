@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
 import city_names from '../cities/Cities'
+import './Feed.css'
 
 export const getDate = () => {
   var date = new Date();
@@ -15,57 +16,51 @@ const Feed = ({ navigate }) => {
   const [userId, setId] = useState("");
   const date = getDate();
   const [selectedCity, setSelectedCity] = useState('');
+  const [displayCityName, setDisplayCityName] = useState('London')
   
   useEffect(() => {
-    const city = () => {
-      if (selectedCity === '') {
-        return 'London'
-      } else if (selectedCity === 'shuffle') {
-        const randomIndex = Math.floor(Math.random() * city_names.length);
-        setSelectedCity(city_names[randomIndex]);
-        return city_names[randomIndex];
-      } else {
-        return selectedCity
-      }
-    }
 
-    fetch(
-      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
-    )
+    if (token) {
+      const city = () => {
+        if (selectedCity === '') {
+          return 'London'
+        } else if (selectedCity === 'shuffle') {
+          const randomIndex = Math.floor(Math.random() * city_names.length);
+          setSelectedCity(city_names[randomIndex]);
+          return city_names[randomIndex];
+        } else {
+          return selectedCity
+        }
+      }
+
+      fetch("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+      window.localStorage.setItem("userId", data.userId);
+      setId(window.localStorage.getItem("userId"));
+      fetch(
+        `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
+      )
       .then((response) => response.json())
       .then((json) => {
         localStorage.setItem("apiData", JSON.stringify(json._embedded.events));
         setData(json._embedded.events);
       })
       .catch((error) => console.error(error));
-      
-    fetch("/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        window.localStorage.setItem("userId", data.userId);
-        setId(window.localStorage.getItem("userId"));
       })
-      .catch((error) => console.error(error));
+    } else {
+      navigate("/signup")
+    }
   }, [selectedCity, date, token]);
 
-
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem('apiData');
-    window.localStorage.removeItem("userId");
-    setToken(null);
-    setId(null);
-    navigate("/login");
-  };
-
   const navToUserPage = () => {
-    // navigate(`/${userId}`)
     navigate("/account");
   }
+
 
   const redirectToSignup = () => {
     navigate("/signup");
@@ -81,8 +76,12 @@ const Feed = ({ navigate }) => {
   const shuffle = () => {
     setSelectedCity('shuffle')
   }
-
+  
   const eventList = data.map((event) => <Event {...event} key={event.id} />);
+
+  if (selectedCity !== "" && displayCityName !== selectedCity) {
+    setDisplayCityName(selectedCity)
+  }
 
   if (!data.length) {
     console.log("No search results");
@@ -91,32 +90,27 @@ const Feed = ({ navigate }) => {
   if (token) {
     return (
       <>
-        <div>
-          This page has rendered
-          <p>{userId}</p>
-          <div>
-            <button type="button" id="logout" onClick={logout}>Logout</button>
-            <button type="button" id="user-page-btn" onClick={navToUserPage}>
-              Your Profile
-            </button>
-            <label for="city-selector">Choose a location: </label>
+       <div className='feedPage'>
+          <div className='flex-column'>
+            <div id="city-selector-container">
+              <label for="city-selector">Choose a location: </label>
             <form>
             <input placeholder="City (default: London)" type="text" id="city-selector" name="city-selector"  />
             <button value={selectedCity} onClick={handleSearch}>Search</button>
 
             <button type="button" id="shuffle" onClick={shuffle}>Shuffle</button>
             </form>
-
-          </div>
-          <div data-cy="feed">
-            {date.toString()}
-            {eventList}
+            <div id="current-location">Current location: { displayCityName }</div>
+            </div>
+            <div id="feed" data-cy="feed">
+              <div id="event-list">
+                {eventList}
+              </div>
+            </div>
           </div>
         </div>
       </>
     );
-  } else {
-    redirectToSignup();
   }
 };
 
