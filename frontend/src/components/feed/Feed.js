@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
 import city_names from '../cities/Cities'
+import './Feed.css'
 
 export const getDate = () => {
   var date = new Date();
@@ -15,6 +16,7 @@ const Feed = ({ navigate }) => {
   const [userId, setId] = useState("");
   const date = getDate();
   const [selectedCity, setSelectedCity] = useState('');
+  const [displayCityName, setDisplayCityName] = useState('London')
   
   useEffect(() => {
     if (token) {
@@ -50,22 +52,15 @@ const Feed = ({ navigate }) => {
     }
   }, [selectedCity]);
 
-
-  // const logout = () => {
-  //   window.localStorage.removeItem("token");
-  //   window.localStorage.removeItem('apiData');
-  //   window.localStorage.removeItem("userId");
-  //   setToken(null);
-  //   setId(null);
-  //   navigate("/login");
-  // };
-
   const navToUserPage = () => {
-    // navigate(`/${userId}`)
     navigate("/account");
   }
 
   const eventList = data.map((event) => <Event {...event} key={event.id} />);
+
+  if (selectedCity !== "" && displayCityName !== selectedCity) {
+    setDisplayCityName(selectedCity)
+  }
 
   if (!data.length) {
     console.log("No search results");
@@ -74,24 +69,24 @@ const Feed = ({ navigate }) => {
   if (token) {
     return (
       <>
-        <div>
-          This page has rendered
-          <p>{userId}</p>
-          <div>
-            {/* <button type="button" id="logout" onClick={logout}>Logout</button> */}
-            <button type="button" id="user-page-btn" onClick={navToUserPage}>
-              Your Profile
-            </button>
-            <label for="city-selector">Choose a location: </label>
-            <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
+        <div className='feedPage'>
+          <div className='flex-column'>
+            <div>
+              <label for="city-selector">Choose a location: </label>
+              <input list="cities" id="city-selector" name="city-selector" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} />
 
-            <datalist id="cities">
-              {city_names.map(city => <option value={city}></option>)}
-            </datalist>
-          </div>
-          <div data-cy="feed">
-            {date.toString()}
-            {eventList}
+              <datalist id="cities">
+                {city_names.map(city => <option value={city}></option>)}
+              </datalist>
+            </div>
+            <div data-cy="feed">
+              <div id="current-location">
+                Current location: { displayCityName }
+              </div>
+              <div id="event-list">
+                {eventList}
+              </div>
+            </div>
           </div>
         </div>
       </>

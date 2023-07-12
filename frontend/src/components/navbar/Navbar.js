@@ -1,5 +1,6 @@
 import React, { useNavigate, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css'
 
 const Navbar = ({navigate}) => {
   const [token, setToken] = useState(window.localStorage.getItem("token"));
@@ -29,18 +30,21 @@ const Navbar = ({navigate}) => {
           <img className="navImage" src='gigguru.png' alt="logo" />
         </Link>
       </div>
-      <Link to="/login">
-        <div className="navLinks">
+      <div className="nav-links">
+        <Link to="/login">
           <button type="button" id="logout" onClick={logout}>Logout</button>
-        </div>
-      </Link>
+        </Link>
+        <Link to="/account">
+          <button type="button" id="account">Account</button>
+        </Link>
+      </div>
     </nav>
   );
     } else {
       return (
         <nav>
           <div className="logo">
-            <Link to='/login'>
+            <Link to='/'>
               <img className="navImage" src='gigguru.png' alt="logo" />
             </Link>
           </div>
