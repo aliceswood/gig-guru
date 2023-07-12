@@ -38,7 +38,6 @@ const Event = (props) => {
           <div data-cy={props.name}>{props.name} @ {props._embedded.venues[0].name}</div>
           <div>Date: {props.dates.start.localDate}</div>
           <div>Start time: {props.dates.start.localTime}</div>
-          <button id="View-event-button" data-cy="more-info-button" onClick={handleClick}>More Info</button>
         </div>
       </div>
       <div className="event-buttons">
@@ -46,6 +45,7 @@ const Event = (props) => {
         <button type="submit" data-cy="actual-like-button" className="likeButton">
           Interested?
         </button>
+        <button id="View-event-button" className="likeButton" data-cy="more-info-button" onClick={handleClick}>More Info</button>
         </form>
         </div>
       </div>

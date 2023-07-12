@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+}
+
+nav {
+  background-color: #021718;
+  /* border-radius: 0px 0px 25px 25px; */
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+nav img {
+  margin-left: 25px;
+  max-height: 100px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links button {
+  margin: 5px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: whitesmoke;
+  transition: 0.5s ease-in-out;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  width: 100px;
+}
+
+.nav-links button:hover {
+  color: hsl(181, 83%, 32%);
+  border: 2px solid hsl(181, 83%, 32%);
+}

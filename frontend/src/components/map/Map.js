@@ -48,7 +48,7 @@ const CustomControlsMap = () => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK' && results.length > 0) {
           const map = new window.google.maps.Map(mapRef.current, {
-            zoom: 10,
+            zoom: 15,
             center: results[0].geometry.location,
           });
 
@@ -80,7 +80,7 @@ const CustomControlsMap = () => {
 
   return (
     <div className='map' data-cy='map'>
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '25vh', width: '500px' }}>
         <div ref={mapRef} style={{ height: '100%' }}></div>
       </div>
     </div>
