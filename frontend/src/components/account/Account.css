@@ -20,7 +20,9 @@
   font-weight: 500;
   border-style: solid;
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 30px -10px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
   color: hsl(182, 87%, 21%);
   background: rgba(245, 245, 245, 0.586);
+  font-family: 'Montserrat', sans-serif;
+
 }
