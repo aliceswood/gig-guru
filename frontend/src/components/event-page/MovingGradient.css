@@ -11,8 +11,8 @@
   padding-top: 1px;
   min-height: 110vh;
   width: 100%;
-  -webkit-animation: AnimateBG 15s ease infinite;
-          animation: AnimateBG 15s ease infinite;
+  -webkit-animation: AnimateBG 10s ease infinite;
+          animation: AnimateBG 10s ease infinite;
 }
 
 @-webkit-keyframes AnimateBG {

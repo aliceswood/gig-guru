@@ -9,8 +9,7 @@
   box-sizing: border-box;
   background: rgba(245, 245, 245, 0.382);
   backdrop-filter: blur(16px);
-  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
-  border: 1px solid hsl(182, 87%, 5%);
+  box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.3);
   max-width: 700px;
   justify-content: center;
   height: 60%;
@@ -25,11 +24,14 @@
   max-width: 400px;
   justify-content: auto;
   margin-top: 50px;
-  border-radius: 10px;
-  border: 1px solid hsl(182, 87%, 5%);
+  box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 25px
 }
-
-
+/* 
+#details-container {
+  display: flex;
+  justify-content: center; 
+} */
 
 #map {
   border-radius: 25px;

@@ -18,16 +18,14 @@ const EventInfo = (props) => {
         <div id="event-title" data-cy="event-name">
           {props.name}
         </div>
-        <div id="time-container">
-          <AiOutlineCalendar/>
+        <div id="details-container">
           <div id="event-time">
+            <AiOutlineCalendar/>
             <div data-cy="event-date">Date: {props.dates.start.localDate}</div>
             <div data-cy="event-time">Time: {props.dates.start.localTime}</div>
           </div>
-        </div>
-        <div id="venue-container">
-          <SlLocationPin/>
           <div id="venue-details">
+            <SlLocationPin/>
             <div data-cy="event-venue">{props._embedded.venues[0].name}</div>
             <div data-cy="event-postalcode">
               {props._embedded.venues[0].postalCode}
