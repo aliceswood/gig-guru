@@ -5,32 +5,38 @@ import './Account.css'
 const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
   const [userId] = useState(window.localStorage.getItem("userId"));
-  
+  const [token] = useState(window.localStorage.getItem("token"));
+
   useEffect(() => {
-    fetch(`/users/${userId}`)
-    .then(response => response.json())
-    .then((json) => {
-      localStorage.setItem('apiData', JSON.stringify(json.events));
-      // console.log(json.events);
-      console.log(json.username);
-      setEvents(json.events);
-  })
-}, [])
+    if (token) {
+      fetch(`/users/${userId}`)
+      .then(response => response.json())
+      .then((json) => {
+        localStorage.setItem('apiData', JSON.stringify(json.events));
+        console.log(json.username);
+        setEvents(json.events);
+      })
+    } else {
+      navigate("/signup")
+    }
+  }, [])
   
+  if (token) {
     return (
-    <>
-      <div>Logged in as: {userId}</div>
-      <div>
-        Location placeholder
-      </div>
-      <div>
-        Slider placeholder
-      </div>
-      <div id="liked-events">
-        { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
-      </div>
-    </>
-    );
+      <>
+        <div>Logged in as: {userId}</div>
+        <div>
+          Location placeholder
+        </div>
+        <div>
+          Slider placeholder
+        </div>
+        <div id="liked-events">
+          { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+        </div>
+      </>
+      );
+    }
   };
 
 export default Account;
