@@ -7,19 +7,24 @@ const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
   const [username, setUsername] = useState('');
   const [userId] = useState(window.localStorage.getItem("userId"));
-  
+  const [token] = useState(window.localStorage.getItem("token"));
+
   useEffect(() => {
-    fetch(`/users/${userId}`)
-    .then(response => response.json())
-    .then((json) => {
-      localStorage.setItem('apiData', JSON.stringify(json.events));
-      // console.log(json.events);
-      console.log(json.username);
-      setEvents(json.events);
-      setUsername(json.username);
-  })
-}, [])
+    if (token) {
+      fetch(`/users/${userId}`)
+      .then(response => response.json())
+      .then((json) => {
+        localStorage.setItem('apiData', JSON.stringify(json.events));
+        console.log(json.username);
+        setEvents(json.events);
+        setUsername(json.username);
+      })
+    } else {
+      navigate("/signup")
+    }
+  }, [])
   
+  if (token) {
     return (
     <>
       <div style={{ backgroundImage: `url(${WaveSvg})`, height: '110vh'}}> 
