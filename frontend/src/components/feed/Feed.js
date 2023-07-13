@@ -100,7 +100,7 @@ const Feed = ({ navigate }) => {
       <>
         <div className='feedPage' style={{ backgroundImage: `url(${WaveSvg})`, height: '100%'}}>
           <div className="flex-column">
-            <div>
+            <div className="city-selector-container">
               <form
                 style={{ display: "inline-flex", marginTop: "1rem" }}
               >

@@ -19,10 +19,16 @@
   font-size: 25px;
   padding-top: 20px;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #city-selector {
   font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#current-location {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .city-selector-button {
@@ -37,6 +43,8 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   width: 100px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .city-selector-button:hover {
