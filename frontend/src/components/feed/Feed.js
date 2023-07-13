@@ -101,9 +101,8 @@ const Feed = ({ navigate }) => {
         <div className='feedPage' style={{ backgroundImage: `url(${WaveSvg})`, height: '100%'}}>
           <div className="flex-column">
             <div className="city-selector-container">
-              <form
-                style={{ display: "inline-flex", marginTop: "1rem" }}
-              >
+              <div>
+              <div style={{ display: "inline-flex", marginTop: "1rem" }} >
                 <input
                   placeholder="Please enter a city"
                   type="text"
@@ -131,16 +130,9 @@ const Feed = ({ navigate }) => {
                 >
                   Shuffle
                 </button>
-              </form>
-              <div
-                id="current-location"
-                style={{
-                  display: "block",
-                  marginTop: "1rem",
-                  textAlign: "center",
-                  color: "white",
-                }}
-              >
+              </div>
+              </div>
+              <div id="current-location">
                 Current location: {selectedCity[0].toUpperCase() + selectedCity.slice(1)}
               </div>
             </div>
