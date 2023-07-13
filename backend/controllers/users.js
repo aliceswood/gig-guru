@@ -73,6 +73,20 @@ const UsersController = {
         }
       }
     });
+  },
+
+  EventPresent: (req, res) => {
+    User.findById(req.params.userId, (err, user) => {
+      if (err) {
+        res.status(400).send({ message: 'Bad request' });
+      } else {
+        for (i in user.liked) {
+          if (user.liked[i]['id'] == req.params.eventId) {
+            res.status(200).send({ eventInDB: true })
+          }
+        }
+      }
+    })
   }
 };
 
