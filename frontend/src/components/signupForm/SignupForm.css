@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
 
 .signUpContainer{
-  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
   background-size: cover; 
   height: 100vh;
   padding-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .signUpForm{
@@ -16,7 +16,6 @@
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
-  background: black;
   min-width: 25%;
   border-radius: 10px;
   box-sizing: border-box;
@@ -86,4 +85,9 @@
 .redirectButton:hover {
   color: hsl(181, 83%, 32%);
   border: 2px solid hsl(181, 83%, 32%);
+}
+
+
+.validation-error {
+  color: aqua;
 }

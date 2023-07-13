@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
 
 .LogInContainer{
-  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
   background-size: cover; 
   height: 100vh;
   padding-top: 150px;
@@ -87,4 +86,8 @@
 .redirectButton:hover {
   color: hsl(181, 83%, 32%);
   border: 2px solid hsl(181, 83%, 32%);
+}
+
+.validation-error {
+  color: aqua;
 }

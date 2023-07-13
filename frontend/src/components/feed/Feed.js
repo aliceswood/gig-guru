@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Event from '../event/Event'
 import city_names from '../cities/Cities'
 import './Feed.css'
+import WaveSvg from "../event-page/Wave.svg"
+
 
 export const getDate = () => {
   var date = new Date();
@@ -90,7 +92,7 @@ const Feed = ({ navigate }) => {
   if (token) {
     return (
       <>
-        <div className='feedPage'>
+        <div className='feedPage' style={{ backgroundImage: `url(${WaveSvg})`, height: '100%'}}>
           <div className='flex-column'>
             <div id="city-selector-container">
               <label for="city-selector">Choose a location: </label>
