@@ -22,12 +22,12 @@ const Account = ({ navigate }) => {
     return (
     <>
       <div className="accountPage">
-          <div className="logged-in">Logged in as: {username}</div>
-        <div className="flex-container">
-          <div id="liked-events">
-            { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+        <div className="liked-events-container">
+          <div className="logged-in">Welcome, {username}</div>
+            <div id="liked-events">
+              { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+            </div>
           </div>
-        </div>
       </div>
     </>
     );

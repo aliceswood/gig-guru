@@ -8,14 +8,19 @@
   min-height: 110vh;
 }
 
-.flex-column {
+.liked-events-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
 }
 
 .logged-in {
+  padding: 25px;
   font-size: 25px;
+  font-weight: 500;
+  border-style: solid;
+  border-top: 1px;
+  border-radius: 0px 0px 25px 25px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 30px -10px;
   color: whitesmoke;
 }
