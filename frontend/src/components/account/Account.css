@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
 
 .accountPage {
-  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
   background-repeat: no-repeat; 
   background-size: cover; 
   padding-top: 1px;
@@ -16,11 +15,12 @@
 
 .logged-in {
   padding: 25px;
+  margin-top: 20px;
   font-size: 25px;
   font-weight: 500;
-  border-style: solid;
-  border-top: 1px;
-  border-radius: 0px 0px 25px 25px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 30px -10px;
-  color: whitesmoke;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+  color: hsl(182, 87%, 21%);
+  background: rgba(245, 245, 245, 0.586);
+  font-family: 'Montserrat', sans-serif;
 }

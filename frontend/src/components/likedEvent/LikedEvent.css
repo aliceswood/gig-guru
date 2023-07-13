@@ -18,10 +18,8 @@
   box-sizing: border-box;
   background: rgba(245, 245, 245, 0.586);
   backdrop-filter: blur(16px);
-  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
   width: 1050px;
-  border: 1px solid hsl(182, 87%, 5%);
-
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
 }
 
 .flex-container div {
@@ -38,7 +36,6 @@
   object-fit: cover;
   height: 100%;
   width: 110%;
-  border: 2px solid hsl(182, 87%, 5%);
 }
 
 .event-info-container {
@@ -46,14 +43,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.event-buttons {
-  padding-top: 38px;
-}
-
 .infoButton {
   transition: all .5s ease;
-  color: whitesmoke;
-  border: 3px solid whitesmoke;
+  color: hsl(182, 87%, 21%);
+  border: 3px solid hsl(182, 87%, 21%);
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -61,14 +54,15 @@
   font-size: 17px;
   background-color : transparent;
   padding: 10px;
-  
   outline: none;
   border-radius: 100px;
   margin-top: 15px;
   width: 150px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .infoButton:hover {
-  color:  hsl(182, 87%, 21%);
-  background-color: whitesmoke;
+  color:  whitesmoke;
+  background-color: hsl(182, 87%, 21%);
 }

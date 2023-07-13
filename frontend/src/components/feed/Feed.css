@@ -15,20 +15,43 @@
   padding-bottom: 100px;
 }
 
-#city-selector-container {
-  font-size: 25px;
-  padding-top: 20px;
+.city-selector-container {
+
   display: flex;
+  padding: 30px;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+  color: hsl(182, 87%, 21%);
+  background: rgba(245, 245, 245, 0.586);
+  font-family: 'Montserrat', sans-serif;
+  flex-direction: column;
 }
 
 #city-selector {
   font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#current-location {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 18px;
+  color: hsl(182, 87%, 21%);
+}
+
+.enter-city-div {
+  flex-direction: r;
 }
 
 .city-selector-button {
   -webkit-font-smoothing: antialiased;
   margin: 5px;
-  border: 2px solid white;
+  border: 2px solid whitesmoke;
   border-radius: 10px;
   padding: 10px;
   font-size: 15px;
@@ -37,6 +60,9 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   width: 100px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+
 }
 
 .city-selector-button:hover {

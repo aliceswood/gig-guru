@@ -17,7 +17,16 @@ nav img {
 
 .nav-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title{
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-links button {
