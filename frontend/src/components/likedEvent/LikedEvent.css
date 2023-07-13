@@ -43,10 +43,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.event-buttons {
-  padding-top: 38px;
-}
-
 .infoButton {
   transition: all .5s ease;
   color: hsl(182, 87%, 21%);
