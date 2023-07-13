@@ -27,7 +27,7 @@ const Navbar = ({navigate}) => {
     <nav>
       <div className="logo">
         <Link to='/'>
-          <img className="navImage" src='gigguru.png' alt="logo" />
+          <img className="navImage" src='/gigguru.png' alt="logo" />
         </Link>
       </div>
       <div className="nav-links">
