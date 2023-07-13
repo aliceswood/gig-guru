@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background: rgba(245, 245, 245, 0.382);
+  backdrop-filter: blur(16px);
+  box-shadow: 20px 20px 5px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  justify-content: center;
+  height: 60%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#image {
+  align-self: center;
+  min-height: 150px;
+  max-height: 300px;
+  min-width: 300px;
+  max-width: 400px;
+  justify-content: auto;
+  margin-top: 50px;
+  box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 25px
+}
+/* 
+#details-container {
+  display: flex;
+  justify-content: center; 
+} */
+
+#map {
+  border-radius: 25px;
+  align-self: center;
+  padding: 20px;
+  align-self: center;
+}
+
+#event-title {
+  margin-right: 50px;
+  margin: auto;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#event-time {
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#venue-details {
+  margin: auto;  
+  text-align: center;
+  margin-top: 10px;
+}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './SignupForm.css'
+import WaveSvg from "../event-page/Wave.svg"
+
 
 const SignupForm = ({ navigate }) => {
   const [email, setEmail] = useState('')
@@ -82,7 +84,8 @@ const SignupForm = ({ navigate }) => {
   }
 
   return (
-    <div className='signUpContainer'>
+    <div className="signup-page" style={{ backgroundImage: `url(${WaveSvg})`, height: '100vh'}}>
+      <div className='signUpContainer'>
         <form className='signUpForm' onSubmit={handleSubmit}>
           <h1 className='signUpHeading'>Welcome to Gig Guru</h1>
           <input className="formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
@@ -96,6 +99,7 @@ const SignupForm = ({ navigate }) => {
             <button className="redirectButton" type="button" id="login" onClick={login}>Already have an account?</button>
           </div>
         </form>
+      </div>
     </div>
   );
 }

@@ -48,8 +48,8 @@
 
 .likeButton {
   transition: all .5s ease;
-  color: whitesmoke;
-  border: 3px solid whitesmoke;
+  color: hsl(182, 87%, 21%);;
+  border: 3px solid hsl(182, 87%, 21%);;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -64,6 +64,6 @@
 }
 
 .likeButton:hover {
-  color:  hsl(182, 87%, 21%);
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: hsl(182, 87%, 21%);;
 }

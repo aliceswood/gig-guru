@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./LoginForm.css";
+import WaveSvg from "../event-page/Wave.svg"
+
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -76,20 +78,22 @@ const LogInForm = ({ navigate }) => {
   }
 
 
-    return (
-      <>
+  return (
+    <>
+      <div className="login-page" style={{ backgroundImage: `url(${WaveSvg})`, height: '100vh'}}>
         <div className='LogInContainer'>
           <form className="logInForm" onSubmit={handleSubmit}>
-          <h1 className='logInHeading'>Log in</h1>
+            <h1 className='logInHeading'>Log in</h1>
             <input className="formInput" placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
             <p className='validation-error'>{validationError?.error}</p>
             <input className="formInput" placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
             <p className='validation-error'>{validationError?.password}</p>
             <input className="button" id='submit' type="submit" value="Submit" />
-          <div>
-            <button className="redirectButton" type="button" id="signup" onClick={signup}>Don't have an account?</button>
+            <div>
+              <button className="redirectButton" type="button" id="signup" onClick={signup}>Don't have an account?</button>
+            </div>
+           </form>
           </div>
-          </form>
         </div>
       </>
     );
