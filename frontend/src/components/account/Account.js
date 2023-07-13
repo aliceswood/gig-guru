@@ -31,9 +31,8 @@ const Account = ({ navigate }) => {
         <div className="accountPage">
           <div className="liked-events-container">
             <div className="logged-in">Welcome, {username}</div>
-              <div id="liked-events">
-                { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
-              </div>
+            <div id="liked-events">
+              { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
             </div>
           </div>
         </div>
@@ -41,5 +40,5 @@ const Account = ({ navigate }) => {
     </>
     );
   };
-
+};
 export default Account;
