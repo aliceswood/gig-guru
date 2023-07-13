@@ -16,7 +16,8 @@ const Feed = ({ navigate }) => {
   const [userId, setId] = useState("");
   const date = getDate();
   const [selectedCity, setSelectedCity] = useState('');
-  const [displayCityName, setDisplayCityName] = useState('London')
+  const [displayCityName, setDisplayCityName] = useState('London');
+  var [maxIndex, setMaxIndex] = useState(5);
   
   useEffect(() => {
 
@@ -43,7 +44,7 @@ const Feed = ({ navigate }) => {
       window.localStorage.setItem("userId", data.userId);
       setId(window.localStorage.getItem("userId"));
       fetch(
-        `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
+        `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=50&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
       )
       .then((response) => response.json())
       .then((json) => {
@@ -57,13 +58,8 @@ const Feed = ({ navigate }) => {
     }
   }, [selectedCity, date, token]);
 
-  const navToUserPage = () => {
-    navigate("/account");
-  }
-
-
-  const redirectToSignup = () => {
-    navigate("/signup");
+  const loadMoreEvents = () => {
+    setMaxIndex(maxIndex += 5);
   }
 
   const handleSearch = (e) => {
@@ -77,7 +73,7 @@ const Feed = ({ navigate }) => {
     setSelectedCity('shuffle')
   }
   
-  const eventList = data.map((event) => <Event {...event} key={event.id} />);
+  const eventList = data.slice(0, maxIndex).map((event) => <Event {...event} key={event.id} />);
 
   if (selectedCity !== "" && displayCityName !== selectedCity) {
     setDisplayCityName(selectedCity)
@@ -107,6 +103,7 @@ const Feed = ({ navigate }) => {
                 {eventList}
               </div>
             </div>
+            <button className="likeButton" onClick={loadMoreEvents}>Load more</button>
           </div>
         </div>
       </>

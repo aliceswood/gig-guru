@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventInfo from '../eventInfo/EventInfo'
 // import "./MovingGradient.css"
-// import "./EventPage.css"
+import "./EventPage.css"
 import WaveSvg from "./Wave.svg"
 
 const ViewEvent = () => {
@@ -39,7 +39,7 @@ const ViewEvent = () => {
       <div className="Page" style={{ backgroundImage: `url(${WaveSvg})`, height: '110vh'}}>
         <div className="event-page-background" >
           <div>
-            <div data-cy="event-div">{eventInfo}</div>
+            <div className="event-div" data-cy="event-div">{eventInfo}</div>
           </div>
         </div>
       </div>

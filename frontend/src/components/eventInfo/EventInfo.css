@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 75px;
+  /* margin-top: 75px; */
   border-radius: 25px;
   box-sizing: border-box;
   background: rgba(245, 245, 245, 0.382);
