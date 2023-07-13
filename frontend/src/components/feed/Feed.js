@@ -28,6 +28,8 @@ const Feed = ({ navigate }) => {
 
   useEffect(() => {
     if (token) {
+      // setMaxIndex(5);
+
       const city = () => {
         if (selectedCity === "") {
           return "London";
@@ -72,6 +74,7 @@ const Feed = ({ navigate }) => {
       selectedCity = "London";
     }
     setSelectedCity(selectedCity);
+    setMaxIndex(5);
     setCityInput(""); 
   };
 
@@ -83,14 +86,15 @@ const Feed = ({ navigate }) => {
     setSelectedCity("shuffle");
   };
 
-  const eventList = data.slice(0, maxIndex).map((event) => <Event {...event} key={event.id} />);
+  const eventList = data.map((event) => <Event {...event} key={event.id} />);
+  var eventListDisplay = eventList.slice(0, maxIndex);
   
   if (!data.length) {
     console.log("No search results");
   }
 
   const loadMoreButton = () => {
-    if (maxIndex !== data.length) {
+    if (maxIndex < data.length) {
       return <button className="likeButton" onClick={loadMoreEvents}>Load more</button>
     } else {
       return;
@@ -113,7 +117,6 @@ const Feed = ({ navigate }) => {
                   className="city-selector-input"
                   value={cityInput}
                   onChange={handleChange}
-                  defaultValue={selectedCity}
                   autoComplete="off"
                 />
                 <button
@@ -139,7 +142,7 @@ const Feed = ({ navigate }) => {
               </div>
             </div>
             <div id="feed" data-cy="feed">
-              <div id="event-list">{eventList}</div>
+              <div id="event-list">{eventListDisplay}</div>
             </div>
             { loadMoreButton() }
           </div>
