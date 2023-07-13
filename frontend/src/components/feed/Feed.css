@@ -20,6 +20,7 @@
   padding-top: 20px;
   display: flex;
   font-family: 'Montserrat', sans-serif;
+  
 }
 
 #city-selector {
@@ -29,6 +30,7 @@
 
 #current-location {
   font-family: 'Montserrat', sans-serif;
+  
 }
 
 .city-selector-button {
