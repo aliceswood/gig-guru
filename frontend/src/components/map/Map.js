@@ -69,7 +69,7 @@ const CustomControlsMap = () => {
     if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
       // Check if Google Maps API is not loaded
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDP7yEWMM2fPVIbvghrbbrUjGjHvvcJM8k&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAPS_KEY}&libraries=places`;
       script.defer = true;
       script.addEventListener('load', initMap);
       document.head.appendChild(script);
