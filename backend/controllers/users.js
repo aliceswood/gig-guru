@@ -7,8 +7,8 @@ const UsersController = {
     
     User.findOne({ email: checkEmail }).then((user) => {
       if (user ) {
-        console.log('Account already created')
-        res.status(400).json({ message: 'Account already created' })
+        console.log('An account with this email address already exists')
+        res.status(400).json({ message: 'An account with this email address already exists' })
       } else {
         const user = new User(req.body);
         user.save((err) => {

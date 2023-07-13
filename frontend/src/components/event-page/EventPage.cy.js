@@ -23,7 +23,7 @@ describe("ViewEvent", () => {
 
     cy.mount(<EventPage navigate={navigate} />);
 
-    cy.get('[data-cy="event-info-container"]').should(
+    cy.get('[data-cy="event-info-div"]').should(
       "contain.text",
       "Alice",
       "2023/07/07",
