@@ -1,7 +1,8 @@
 import React from "react";
 import './event.css'
+import { useNavigate } from 'react-router-dom'
 
-const Event = (props, navigate) => {
+const Event = (props, { navigate }) => {
 
   const ViewEvent = `/event/${props.id}`;
   console.log(`This is the Event.js component ${props}`)
@@ -20,6 +21,7 @@ const Event = (props, navigate) => {
     })
   }
 
+  navigate = useNavigate()
   const handleClick = () => {
     navigate(ViewEvent)
   }
