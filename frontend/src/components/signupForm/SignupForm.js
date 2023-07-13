@@ -83,6 +83,8 @@ const SignupForm = ({ navigate }) => {
 
   return (
     <div className='signUpContainer'>
+        <div>{ process.env.REACT_APP_ROOT }</div>
+        <div>{ process.env.REACT_APP_TEST_VAR_FRONTEND }</div>
         <form className='signUpForm' onSubmit={handleSubmit}>
           <h1 className='signUpHeading'>Welcome to Gig Guru</h1>
           <input className="formInput" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
