@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LikedEvent from "../likedEvent/LikedEvent";
 import './Account.css'
+import WaveSvg from "../event-page/Wave.svg"
 
 const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
@@ -19,15 +20,17 @@ const Account = ({ navigate }) => {
   
     return (
     <>
-      <div>Logged in as: {userId}</div>
-      <div>
-        Location placeholder
-      </div>
-      <div>
-        Slider placeholder
-      </div>
-      <div id="liked-events">
-        { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+      <div style={{ backgroundImage: `url(${WaveSvg})`, height: '110vh'}}> 
+        <div>Logged in as: {userId}</div>
+        <div>
+          Location placeholder
+        </div>
+        <div>
+          Slider placeholder
+        </div>
+        <div id="liked-events">
+          { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+        </div>
       </div>
     </>
     );
