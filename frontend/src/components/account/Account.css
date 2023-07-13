@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.accountPage {
+  background-image: linear-gradient(hsl(181, 83%, 21%), hsl(182, 87%, 5%));
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  padding-top: 1px;
+  min-height: 110vh;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100px;
+}
+
+.logged-in {
+  font-size: 25px;
+  color: whitesmoke;
+}

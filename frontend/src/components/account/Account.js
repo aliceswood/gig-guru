@@ -4,6 +4,7 @@ import './Account.css'
 
 const Account = ({ navigate }) => {
   const [events, setEvents] = useState([]);
+  const [username, setUsername] = useState('');
   const [userId] = useState(window.localStorage.getItem("userId"));
   
   useEffect(() => {
@@ -14,20 +15,19 @@ const Account = ({ navigate }) => {
       // console.log(json.events);
       console.log(json.username);
       setEvents(json.events);
+      setUsername(json.username);
   })
 }, [])
   
     return (
     <>
-      <div>Logged in as: {userId}</div>
-      <div>
-        Location placeholder
-      </div>
-      <div>
-        Slider placeholder
-      </div>
-      <div id="liked-events">
-        { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+      <div className="accountPage">
+          <div className="logged-in">Logged in as: {username}</div>
+        <div className="flex-container">
+          <div id="liked-events">
+            { events.map((event => <LikedEvent {...event} key={event.id}/>)) }
+          </div>
+        </div>
       </div>
     </>
     );
