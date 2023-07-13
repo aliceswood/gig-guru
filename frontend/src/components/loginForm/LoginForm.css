@@ -87,3 +87,7 @@
   color: hsl(181, 83%, 32%);
   border: 2px solid hsl(181, 83%, 32%);
 }
+
+.validation-error {
+  color: aqua;
+}
