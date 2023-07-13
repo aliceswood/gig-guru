@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './event.css'
 import { useNavigate } from 'react-router-dom';
 
 const Event = (props) => {
-
   const ViewEvent = `/event/${props.id}`;
   console.log(`This is the Event.js component ${props}`)
+  const [userId] = useState(window.localStorage.getItem("userId"))
+  const [eventStatus, setEventStatus] = useState(false)
+
+  useEffect(() => {
+    fetch(`/users/${userId}/${props.id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setEventStatus(data.eventInDB)
+    })
+  }, [])
 
   const handleLike = async (event) => {
     event.preventDefault();
- 
+    setEventStatus(true)
 
     await fetch('/users', {
       method: "PATCH",
@@ -24,6 +33,14 @@ const Event = (props) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(ViewEvent)
+  }
+
+  const eventStatusValue = () => {
+    if (!eventStatus) {
+      return 'Interested?';
+    } else {
+      return 'Added!';
+    }
   }
 
   return (
@@ -43,7 +60,7 @@ const Event = (props) => {
       <div className="event-buttons">
         <form onSubmit={handleLike} data-cy="like-button">
         <button type="submit" data-cy="actual-like-button" className="likeButton">
-          Interested?
+          { eventStatusValue() }
         </button>
         <button id="View-event-button" className="likeButton" data-cy="more-info-button" onClick={handleClick}>More Info</button>
         </form>
