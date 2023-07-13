@@ -28,11 +28,7 @@
   box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.3);
   border-radius: 25px
 }
-/* 
-#details-container {
-  display: flex;
-  justify-content: center; 
-} */
+
 
 #map {
   border-radius: 25px;

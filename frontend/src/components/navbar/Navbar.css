@@ -41,6 +41,7 @@ nav img {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   width: 100px;
+  cursor: pointer;
 }
 
 .nav-links button:hover {
