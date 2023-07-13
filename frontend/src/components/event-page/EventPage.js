@@ -8,17 +8,6 @@ const ViewEvent = () => {
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const { id } = useParams()
 
-    // useEffect(() => {
-    //     fetch(
-    //       `https://app.ticketmaster.com/discovery/v2/events.json?id=${id}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
-    //     )
-    //       .then((response) => response.json())
-    //       .then((json) => setData(json._embedded.events))
-    //       .catch((error) => console.error(error));
-    // }, []);
-    console.log(id);
-
-
     useEffect(() => {
       const storedData = localStorage.getItem('apiData');
       if (storedData) {

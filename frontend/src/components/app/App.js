@@ -12,11 +12,10 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-  const navigate = useNavigate()
 
   return (
     <>
-      <Navbar navigate={ useNavigate } />
+        <Navbar navigate={ useNavigate() } />
       <Routes>
         <Route path='/signup' element={<SignUpForm navigate={ useNavigate() } />}/>
         <Route path='/login' element={<LogInForm navigate={ useNavigate() } />}/>

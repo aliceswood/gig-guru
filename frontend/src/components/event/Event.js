@@ -1,8 +1,7 @@
 import React from "react";
 import './event.css'
-import { useNavigate } from 'react-router-dom';
 
-const Event = (props) => {
+const Event = (props, navigate) => {
 
   const ViewEvent = `/event/${props.id}`;
   console.log(`This is the Event.js component ${props}`)
@@ -21,17 +20,18 @@ const Event = (props) => {
     })
   }
 
-  const navigate = useNavigate()
   const handleClick = () => {
     navigate(ViewEvent)
   }
+
+  console.log(props)
 
   return (
     <>
     <div className="entireEvent">
     <div className="flex-container">
       <div className="event-image">
-        <img src={props.images[3].url} alt={props.name}/>
+        <img src={props.images[0].url} alt={props.name}/>
       </div>
       <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">

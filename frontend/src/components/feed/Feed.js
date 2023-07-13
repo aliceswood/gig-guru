@@ -42,6 +42,8 @@ const Feed = ({ navigate }) => {
       .then((data) => {
       window.localStorage.setItem("userId", data.userId);
       setId(window.localStorage.getItem("userId"));
+
+      console.log('about to make an api request')
       fetch(
         `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`
       )
@@ -77,7 +79,7 @@ const Feed = ({ navigate }) => {
     setSelectedCity('shuffle')
   }
   
-  const eventList = data.map((event) => <Event {...event} key={event.id} />);
+  const eventList = data.map((event) => <Event {...event} navigate={ navigate } key={event.id} />);
 
   if (selectedCity !== "" && displayCityName !== selectedCity) {
     setDisplayCityName(selectedCity)
