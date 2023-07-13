@@ -8,14 +8,6 @@ const Event = (props) => {
   const [userId] = useState(window.localStorage.getItem("userId"))
   const [eventStatus, setEventStatus] = useState(false)
 
-  useEffect(() => {
-    fetch(`/users/${userId}/${props.id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setEventStatus(data.eventInDB)
-    })
-  }, [])
-
   const handleLike = async (event) => {
     event.preventDefault();
     setEventStatus(true)
