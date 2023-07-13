@@ -62,12 +62,12 @@
   transition: 0.5s ease-in-out;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .button:hover {
   color: hsl(181, 83%, 32%);
   border: 2px solid hsl(181, 83%, 32%);
-
 }
 
 .redirectButton{
@@ -81,6 +81,7 @@
   transition: 0.5s ease-in-out;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px) saturate(180%);
+  cursor: pointer;
 }
 
 .redirectButton:hover {
