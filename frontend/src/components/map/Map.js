@@ -81,7 +81,7 @@ const CustomControlsMap = () => {
   return (
     <div className='map' data-cy='map'>
       <div style={{ height: '40vh', width: '450px' }}>
-        <div ref={mapRef} style={{ height: '100%' }}></div>
+        <div ref={mapRef} style={{ height: '100%', borderRadius: '25px' }}></div>
       </div>
     </div>
   );
