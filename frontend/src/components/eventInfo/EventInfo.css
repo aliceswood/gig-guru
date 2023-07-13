@@ -3,7 +3,8 @@
 .event-info {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 75px;
   border-radius: 25px;
   box-sizing: border-box;
