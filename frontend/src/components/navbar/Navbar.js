@@ -50,6 +50,14 @@ const Navbar = ({navigate}) => {
             </Link>
           </div>
           <div className="title"> Gig Guru </div>
+          <div className="nav-links">
+            <Link to="/login">
+              <button type="button" id="logout">Log in</button>
+            </Link>
+            <Link to="/signup">
+              <button type="button" id="account">Sign up</button>
+            </Link>
+          </div>
         </nav>
       )
     }
