@@ -27,9 +27,10 @@ const Navbar = ({navigate}) => {
     <nav>
       <div className="logo">
         <Link to='/'>
-          <img className="navImage" src='/gigguru.png' alt="logo" />
+          <img className="navImage" src='/gigguru-logo.png' alt="logo" />
         </Link>
       </div>
+      <div className="title"> Gig Guru </div>
       <div className="nav-links">
         <Link to="/login">
           <button type="button" id="logout" onClick={logout}>Logout</button>
@@ -48,6 +49,7 @@ const Navbar = ({navigate}) => {
               <img className="navImage" src='gigguru.png' alt="logo" />
             </Link>
           </div>
+          <div className="title"> Gig Guru </div>
         </nav>
       )
     }
