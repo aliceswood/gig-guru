@@ -18,6 +18,7 @@ const Feed = ({ navigate }) => {
   const date = getDate();
   const [selectedCity, setSelectedCity] = useState("London");
   const [cityInput, setCityInput] = useState("");
+  var [maxIndex, setMaxIndex] = useState(5);
 
   const handleChange = (event) => {
     setCityInput(event.target.value);
@@ -50,7 +51,7 @@ const Feed = ({ navigate }) => {
       window.localStorage.setItem("userId", data.userId);
       setId(window.localStorage.getItem("userId"));
       fetch(
-        `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=5&sort=date,asc&startDateTime=${date}&apikey=${process.env.REACT_APP_TICKETMASTER_KEY}`
+        `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city()}&size=50&sort=date,asc&startDateTime=${date}&apikey=${process.env.REACT_APP_TICKETMASTER_KEY}`
       )
       .then((response) => response.json())
       .then((json) => {
@@ -64,14 +65,6 @@ const Feed = ({ navigate }) => {
     }
   }, [selectedCity, date, token]);
 
-  const navToUserPage = () => {
-    navigate("/account");
-  };
-
-  const redirectToSignup = () => {
-    navigate("/signup");
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
     let selectedCity = document.getElementById("city-selector").value;
@@ -82,14 +75,26 @@ const Feed = ({ navigate }) => {
     setCityInput(""); 
   };
 
+  const loadMoreEvents = () => {
+    setMaxIndex(maxIndex += 5);
+  }
+
   const shuffle = () => {
     setSelectedCity("shuffle");
   };
 
-  const eventList = data.map((event) => <Event {...event} key={event.id} />);
+  const eventList = data.slice(0, maxIndex).map((event) => <Event {...event} key={event.id} />);
   
   if (!data.length) {
     console.log("No search results");
+  }
+
+  const loadMoreButton = () => {
+    if (maxIndex !== data.length) {
+      return <button className="likeButton" onClick={loadMoreEvents}>Load more</button>
+    } else {
+      return;
+    }
   }
 
   if (token) {
@@ -144,6 +149,7 @@ const Feed = ({ navigate }) => {
             <div id="feed" data-cy="feed">
               <div id="event-list">{eventList}</div>
             </div>
+            { loadMoreButton() }
           </div>
         </div>
       </>
