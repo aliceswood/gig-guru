@@ -61,6 +61,7 @@
   backdrop-filter: blur(10px);
   width: 100px;
   font-family: 'Montserrat', sans-serif;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 
 }
 
