@@ -1,4 +1,6 @@
 # BACKEND IGNORE
 backend/node_modules
+backend/.env
 
 # FRONTEND IGNORE
+frontend/.env

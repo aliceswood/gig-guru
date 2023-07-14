@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.flex-container {
+  border-radius: 25px;
+  width: 1000px;
+  margin: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.entireEvent{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 30px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background: rgba(245, 245, 245, 0.586);
+  backdrop-filter: blur(16px);
+  width: 1050px;
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flex-container div {
+  margin: 10px;
+}
+
+.event-image {
+  width: 300px;
+  height: 150px;
+}
+
+.event-image img {
+  border-radius: 25px;
+  object-fit: cover;
+  height: 100%;
+  width: 110%;
+}
+
+.event-info-container {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.infoButton {
+  transition: all .5s ease;
+  color: hsl(182, 87%, 21%);
+  border: 3px solid hsl(182, 87%, 21%);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  font-size: 17px;
+  background-color : transparent;
+  padding: 10px;
+  outline: none;
+  border-radius: 100px;
+  margin-top: 15px;
+  width: 150px;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.infoButton:hover {
+  color:  whitesmoke;
+  background-color: hsl(182, 87%, 21%);
+}

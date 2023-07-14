@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
+.accountPage {
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  padding-top: 1px;
+  min-height: 110vh;
+}
+
+.liked-events-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logged-in {
+  padding: 25px;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+  color: hsl(182, 87%, 21%);
+  background: rgba(245, 245, 245, 0.586);
+  font-family: 'Montserrat', sans-serif;
+}

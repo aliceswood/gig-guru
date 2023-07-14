@@ -1,3 +1,8 @@
 {
-    "mongoURI": "mongodb+srv://gig_guru_master:<password>@gigguru.hibnhig.mongodb.net/?retryWrites=true&w=majority"
-}
+    "test": {
+      "MONGODBURI": "mongodb+srv://gig_guru_master:qAkSxTFjpv9lTWb2@gigguru.hibnhig.mongodb.net/?retryWrites=true&w=majority"
+    },
+    "development": {
+      "MONGODBURI": "mongodb+srv://gig_guru_master:qAkSxTFjpv9lTWb2@gigguru.hibnhig.mongodb.net/gigguru?retryWrites=true&w=majority"
+    }
+  }

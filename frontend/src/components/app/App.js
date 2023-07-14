@@ -1,18 +1,28 @@
-import logo from '../../logo.svg';
 import './App.css';
 import SignUpForm from '../signupForm/SignupForm'
-import React, { useState } from 'react';
+import Feed from '../feed/Feed'
+import LogInForm from '../loginForm/LoginForm'
+import Account from '../account/Account'
+import Navbar from '../navbar/Navbar';
+import ViewEvent from '../event-page/EventPage'
 import {
-  useNavigate,
   Routes,
-  Route
+  Route,
+  useNavigate
 } from "react-router-dom";
 
 const App = () => {
+  const navigate = useNavigate()
+
   return (
     <>
+      <Navbar navigate={ useNavigate } />
       <Routes>
-        <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
+        <Route path='/signup' element={<SignUpForm navigate={ useNavigate() } />}/>
+        <Route path='/login' element={<LogInForm navigate={ useNavigate() } />}/>
+        <Route path='/' element={<Feed navigate={ useNavigate() } />}/>
+        <Route path='/account' element={<Account navigate={ useNavigate() }/>}/>
+        <Route path='/event/:id' element={<ViewEvent navigate={ useNavigate() } />}/>
       </Routes>
     </>
   );
