@@ -1,3 +1,4 @@
+import { MemoryRouter } from "react-router-dom";
 import Feed from "./Feed";
 import { getDate } from "./Feed";
 const navigate = () => {};
@@ -9,23 +10,25 @@ beforeEach(() => {
 describe("Feed", () => {
   it("Calls the / endpoint and lists all the events", () => {
     const date = getDate();
+    const city = 'London'
     window.localStorage.setItem("token", "fakeToken");
     
     cy.intercept("/users",
-      (req) => {
-        req.reply({
-          statusCode: 200,
-          body: {
-            userId: "fakeUserId",
-            email: "fakeEmail@example.com",
-            name: "Fake User",
-          },
-        });
-      }
+    (req) => {
+      req.reply({
+        statusCode: 200,
+        body: {
+          userId: "fakeUserId",
+          email: "fakeEmail@example.com",
+          username: "Fake User",
+          name: "Alice"
+        },
+      });
+    }
     ).as("getUsers");
-    
+
     cy.intercept(
-      `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&city=london&size=2&sort=date,asc&startDateTime=${date}&apikey=JtjU0ATGKIgSLhSEz5UQnr1LFy9hYZ0s`,
+                `https://app.ticketmaster.com/discovery/v2/events.json?classificationId=KZFzniwnSyZfZ7v7nJ&countryCode=GB&city=${city}&size=50&sort=date,asc&startDateTime=${date}&apikey=${process.env.REACT_APP_TICKETMASTER_KEY}`,
       (req) => {
         req.reply({
           statusCode: 200,
@@ -43,17 +46,20 @@ describe("Feed", () => {
           },
         });
       }
-    ).as("getEvents");
+      ).as("getEvents");
 
-    cy.wait("@getUsers").then(() => {
+      cy.mount(<MemoryRouter><Feed navigate={navigate}/></MemoryRouter>)
+      
+      cy.wait("@getUsers").then(() => {
+      });
+      
       cy.wait("@getEvents").then(() => {
         cy.get('[data-cy="event-info-container"]').should(
           "contain.text",
           "Alice",
-          "2023/07/07",
-          "19:00:00"
-        );
-      });
+        "2023/07/07",
+        "19:00:00"
+      );
     })
   });
 });

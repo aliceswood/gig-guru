@@ -12,7 +12,7 @@ const EventInfo = (props) => {
         <img
           id="image"
           data-cy="event-image"
-          src={props.images[3].url}
+          src={props.images[0].url}
           alt="event"
         ></img>
         <div id="event-title" data-cy="event-name">

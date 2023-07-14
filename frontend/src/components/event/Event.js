@@ -40,7 +40,7 @@ const Event = (props) => {
     <div className="entireEvent">
     <div className="flex-container">
       <div className="event-image">
-        <img src={props.images[3].url} alt={props.name}/>
+        <img src={props.images[0].url} alt={props.name}/>
       </div>
       <div className="event-info-container" data-cy="event-info-container">
         <div className="event-information">
