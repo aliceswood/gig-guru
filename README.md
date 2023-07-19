@@ -84,4 +84,20 @@ jest
 
 ## Future Developments
 
+As a team we had a lot of ideas of what we wanted to implement however, due to the 2 week timescale, we had to prioritise core functionality. We did discuss the following features we would like to implement in the future:
+
+- Using the Spotify API. This would allow the user to filter the music event recommendations based on their selected genre preferences. The event info page would also be expanded to include the top Spotify song of the artist, as seen in the Excalidraw planning screenshots.
+
+- We also would like to implement a friends feature. This would make the app like a social media platform based on common music tastes. The idea is that users would be able to add friends and see their interests. They would be notified when a friend of theirs is interested in a similar event. This also opened up discussion of implementing chat functionality between users.
+
+- Finally, we discussed implementing the option to book tickets through the site. We had looked into this but as the Ticketmaster Discovery API returned third party links and displaying this was not possible using this API. We discussed how this would be an interesting challenge to work around.
+
 ## Team Info
+
+Your resident Gig Gurus are:
+
+- [Alice Wood](https://github.com/aliceswood)
+- [Barney Wilton](https://github.com/bwilton93)
+- [Charlie Parker](https://github.com/cshjp)
+- [Julian Festing](https://github.com/Raphael40)
+- [Ormeline Luyengi](https://github.com/Ormeline)
