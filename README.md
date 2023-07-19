@@ -37,4 +37,43 @@ Below are screenshots of our Excalidraw planning. Having this visual plan provid
 
 - Taking time to go through the PRs and merge as a team meant that we were all able to discuss the code and understand each section of our code base. Even if it got more complicated towards the later stages, we worked to resolve merge conflicts as a team
 
+## Set Up
 
+```bash
+# Install the dependencies
+cd frontend
+npm install
+cd ../backend
+npm install
+
+# Run the bundler
+npm run build
+
+# Start the front and backend servers
+cd frontend
+npm run
+cd ../backend
+npm run
+```
+
+## Testing
+
+we wrote both component and unit tests in addition to e2e testing to mock user interaction with the app.
+
+To run the tests:
+
+```bash
+# To run the frontend tests:
+cd frontend
+npm run cypress:open
+
+# To run the backend tests:
+cd backend
+jest
+```
+
+## Technologies Used
+
+## Future Developments
+
+## Team Info
