@@ -28,3 +28,13 @@ Below are screenshots of our Excalidraw planning. Having this visual plan provid
 ![MVP](frontend/public/MVP.png)
 
 ![sprint-2](frontend/public/sprint-2.png)
+
+## Reflection 
+
+- We found the time we took to plan as a team really beneficial as it meant we were on the same page with the direction of the project. This continued throughout the 2 weeks as we had regular stand ups and retrospectives as a full team.
+
+- Using 2 external APIs was a fun learning experience for us, although it was a challenge when it came to testing, we all agreed that we have learnt a lot from this.
+
+- Taking time to go through the PRs and merge as a team meant that we were all able to discuss the code and understand each section of our code base. Even if it got more complicated towards the later stages, we worked to resolve merge conflicts as a team
+
+
