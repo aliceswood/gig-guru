@@ -6,7 +6,12 @@
 - [App Intro](#app-intro)
 - [Team Learning Goals](#team-learning-goals)
 - [Design Steps](#design-steps)
-
+- [Reflection](#reflection)
+- [Set-Up](#set-up)
+- [Testing](#testing)
+- [Technologies Used](#technologies-used)
+- [Future Developments](#future-developments)
+- [Team Info](#team-info)
 
 ## App Intro
 🎶 Get ready to rock with Gig Guru, your ultimate music discovery app for unforgettable experiences in the UK! Pick your favorite city, and from buzzing festivals to intimate shows, we've got your dream lineup covered. Using Gig Guru, you will never miss a beat! 🎸
