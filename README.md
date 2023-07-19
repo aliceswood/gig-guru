@@ -74,6 +74,14 @@ jest
 
 ## Technologies Used
 
+- React JS: used for buidling the individual components of our app
+- HTML/CSS: the languages used for building the web app and improving the UI
+- Jest: A JS testing framework that we used in the backend
+- Cypress: A framework that we used for e2e and front end testing
+- Discovery API: the Ticketmaster API which we used for the music events and details in the app
+- Google Maps API: Used for the maps on event info pages
+- MongoDB Atlas: Database used for storing user information, including encrypted log in info and liked events
+
 ## Future Developments
 
 ## Team Info
