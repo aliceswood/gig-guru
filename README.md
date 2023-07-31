@@ -68,7 +68,7 @@ npm install
 cd backend
 touch .env
 > open .env
-> JWT_SECRET={ANY STRING HERE}
+> JWT_SECRET=SECRET
 
 cd ../frontend
 touch.env
