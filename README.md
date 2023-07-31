@@ -43,6 +43,17 @@ Below are screenshots of our Excalidraw planning. Having this visual plan provid
 - Taking time to go through the PRs and merge as a team meant that we were all able to discuss the code and understand each section of our code base. Even if it got more complicated towards the later stages, we worked to resolve merge conflicts as a team
 
 ## Set Up
+Generate API keys
+
+google maps:
+```
+https://developers.google.com/maps/documentation/javascript/get-api-key
+```
+ticketmaster:
+```
+https://developer.ticketmaster.com/
+```
+
 
 ```bash
 # Install the dependencies
@@ -50,7 +61,24 @@ cd frontend
 npm install
 cd ../backend
 npm install
+```
 
+```bash
+# Create .env files
+cd backend
+touch .env
+> open .env
+> JWT_SECRET={ANY STRING HERE}
+
+cd ../frontend
+touch.env
+> open .env
+> REACT_APP_TICKETMASTER_KEY={TICKETMASTER API KEY HERE}
+  REACT_APP_MAPS_KEY={GOOGLE MAPS API KEY HERE}
+```
+
+
+```bash
 # Run the bundler
 npm run build
 
