@@ -115,6 +115,20 @@ jest
 - Google Maps API: Used for the maps on event info pages
 - MongoDB Atlas: Database used for storing user information, including encrypted log in info and liked events
 
+## Website Preview
+
+### log-in screen
+![login image](frontend/public/login.png)
+
+### Feed
+![feed image](frontend/public/feed.png)
+
+### Account
+![account image](frontend/public/account.png)
+
+### Event
+![event image](frontend/public/event.png)
+
 ## Future Developments
 
 As a team we had a lot of ideas of what we wanted to implement however, due to the 2 week timescale, we had to prioritise core functionality. We did discuss the following features we would like to implement in the future:
