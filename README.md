@@ -117,16 +117,16 @@ jest
 
 ## Website Preview
 
-log-in screen
+### log-in screen
 ![login image](frontend/public/login.png)
 
-Feed
+### Feed
 ![feed image](frontend/public/feed.png)
 
-Account
+### Account
 ![account image](frontend/public/account.png)
 
-Event
+### Event
 ![event image](frontend/public/event.png)
 
 ## Future Developments
