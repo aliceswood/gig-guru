@@ -84,9 +84,9 @@ npm run build
 
 # Start the front and backend servers
 cd frontend
-npm run
+npm start
 cd ../backend
-npm run
+npm start
 ```
 
 ## Testing
